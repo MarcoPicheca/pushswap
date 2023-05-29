@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 
 t_list	*ft_lstnew(int content)

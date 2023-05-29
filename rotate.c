@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void	ra_swap(t_list **stack_a)
 {
 	t_list	*last;
@@ -15,6 +17,7 @@ void	ra_swap(t_list **stack_a)
 	write(1, "ra\n", 3);
 	return ;
 }
+
 void	rb_swap(t_list **stack_b)
 {
 	t_list	*last;

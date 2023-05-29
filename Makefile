@@ -6,7 +6,11 @@ ft_lstnew.c\
 ft_strlen.c\
 ft_lstadd_front.c\
 ft_lstadd_back.c\
-ft_mosse.c\
+push.c\
+swap.c\
+rotate.c\
+reverse.c\
+ft_swap5.c\
 
 OBJS = $(SRCS:.c=.o)
 

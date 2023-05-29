@@ -1,9 +1,9 @@
 
 #include "push_swap.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-	size_t	size;
+	int	size;
 
 	size = 0;
 	while (str[size] != '\0')

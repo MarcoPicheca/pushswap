@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mpicheca <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 10:22:28 by mpicheca          #+#    #+#             */
-/*   Updated: 2023/05/02 10:34:33 by mpicheca         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -28,7 +17,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(int content);
 char	*ft_itoa(int n);
-size_t	ft_strlen(const char *str);
+int     ft_strlen(const char *str);
 int		ft_atoi(const char *str);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	rra_swap(t_list **stack_a);
@@ -42,7 +31,8 @@ void	sb_swap(t_list **stack_b);
 void	ss_swap(t_list **stack_a, t_list **stack_b);
 void	pa_swap(t_list **stack_a, t_list **stack_b);
 void	pb_swap(t_list **stack_a, t_list **stack_b);
-
+int	    check_double(t_list *stack_a);
+t_list	**stackato(char *argv, t_list **stack_a);
+int	check_double(t_list *stack_a);
 
 #endif
-

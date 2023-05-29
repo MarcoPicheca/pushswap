@@ -1,3 +1,4 @@
+#include "push_swap.c"
 
 void	rra_swap(t_list **stack_a)
 {

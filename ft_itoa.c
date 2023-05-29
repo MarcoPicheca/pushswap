@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alegreci <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 10:19:30 by alegreci          #+#    #+#             */
-/*   Updated: 2022/10/06 16:51:10 by alegreci         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #include "push_swap.h"
 
 static int	length(int n)
 {
 	int	count;
-
 	count = 0;
 	if (n < 0)
 	{
@@ -29,12 +17,10 @@ static int	length(int n)
 	count++;
 	return (count);
 }
-
 char	*ft_itoa(int n)
 {
 	char	*str;
 	int		i;
-
 	i = length(n);
 	if (n == -2147483648)
 		return ("-2147483648");
