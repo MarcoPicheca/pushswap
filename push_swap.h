@@ -57,6 +57,7 @@ void	ft_free_error(&stack_a, &stack_b);
 // min e max in array
 int	min_int(int *j);
 int	max_int(int *j);
+int	*ft_arr_int(t_list *stack_a, int *j);
 
 // main function
 t_list	**stackato(char *argv, t_list **stack_a);

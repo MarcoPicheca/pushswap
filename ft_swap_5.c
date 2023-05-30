@@ -9,7 +9,7 @@ t_list * ft_swap_5(t_list * stack_a, t_list * stack_b)
 		exit(0);
 	}
 	if (ft_lstsize(stack_a) == 3)
-		swap3(stack_a);
+		swap3(&stack_a);
 	if (ft_lstsize(&stack_a) == 4)
 		swap4(&stack_a, &stack_b);
 	if (ft_lstsize(&stack_a) == 5)
@@ -17,8 +17,13 @@ t_list * ft_swap_5(t_list * stack_a, t_list * stack_b)
 	return(stack_a);
 }
 
-int	*ft_arr_int(t_list *stack_a, int *j, int i, int n)
+int	*ft_arr_int(t_list *stack_a, int *j)
 {
+	int	i;
+	int	n;
+	
+	n = ft_lstsize(stack_a);
+	i = 0;
 	while (stack_a != NULL && i < n)
 	{
 		j[i] = stack_a->content;
@@ -31,12 +36,8 @@ int	*ft_arr_int(t_list *stack_a, int *j, int i, int n)
 void	swap3(t_list *stack_a)
 {
 	int	j[2];
-	int	i;
-	int n;
-	
-	n = 3;
-	i = 0;
-	ft_arr_int(stack_a, &j, i, n);
+
+	ft_arr_int(stack_a, &j);
 	// 1-3-2
 	if (j[0] < j[1] && j[0] < j[2] && j[1] > j[2])
 	{
@@ -66,12 +67,9 @@ void	swap3(t_list *stack_a)
 void	swap4(t_list *stack_a, t_list *stack_b)
 {
 	int	j[3];
-	int i;
-	int n;
 	int min;
-	n = 4;
-	i = 0;
-	ft_arr_int(stack_a, &j, i, n);
+
+	ft_arr_int(stack_a, &j);
 	min = min_int(j);
 	while (j != NULL)
 	{
@@ -89,6 +87,9 @@ void	swap4(t_list *stack_a, t_list *stack_b)
 	swap3(&stack_a);
 }
 
+// TODO: fare la funzione di swap5
+
+//spostare min e max int in un altro file
 int	min_int(int *j)
 {
 	int	n;
