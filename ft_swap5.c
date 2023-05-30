@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_list  *ft_swap5(t_list *stack_a, t_list *stack_b)
+t_list  *swap5(t_list *stack_a, t_list *stack_b)
 {
     if (ft_lstsize(stack_a) == 3)
 		swap3(&stack_a);
