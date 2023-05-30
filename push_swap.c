@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-int	ft_check(char *argv)
-{
-	int	i;
-	i = 0;
-
-	while (argv[i])
-		if ((argv[i] >= '0' && argv[i] <= '9') || argv[i] == 45)
-			i++;
-		else
-			return(1);
-	return (0);
-}
-
 t_list	**stackato(char *argv, t_list **stack_a)
 {
 	t_list	*new_node;
@@ -54,25 +41,53 @@ int	main(int argc, char **argv)
 		stack_a->content = ft_atoi(argv[i++]);
 		while (i < argc)
 		{
-			if (ft_check(argv[i]) == 1)
-				{
-					free (stack_a);
-					exit (0);
-				}
-			stackato(argv[i], &stack_a);
+			if (stackato(argv[i], &stack_a) == 1)
+			{
+				free (stack_a);
+				exit (0);
+			}
 			i++;
+		}
+		if (check_double(stack_a) == 1)
+			ft_free_error(&stack_a, &stack_b);
+		if (correct_combo(stack_a) == 1)
+		{
+			write(1, "Correct combo!", 15);
+			return (0);
 		}
 	}
 	if(ft_lstsize(stack_a) <= 5)
-		swap_5(&stack_a, &stack_b);
+		ft_swap_5(&stack_a, &stack_b);
 	else
 		pushami(&stack_a, &stack_b);
 	free(stack_b);
-	return(stack_a);
+	return(0);
 }
-//		STAMPA DELLA LISTA
-		// while (stack_a != NULL)
-		// {
-		// 	printf("%d\n", stack_a->content);
-		// 	stack_a = stack_a->next;
-		// }
+
+// STAMPA LISTA
+//		while (stack_a != NULL)
+//		{
+//			printf("%d\n", stack_a->content);
+//			stack_a = stack_a->next;
+//		}
+
+
+// int	longest;
+
+// stack a = 40 12 33 45 9 8 10;
+// longest = 40;
+// int *lis = 40, 45;
+// while (stack a != NULL)
+// {
+// 	if (stack a[i] > longest)
+// 	{
+// 		longest= stack_a[i];
+// 		list[x] = longest;
+// 	}
+// }
+
+// stack a =  10 40 45  stack  8 9  33 12 
+
+// mov a [0];
+   
+// mov b [0];

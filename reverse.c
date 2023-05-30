@@ -1,6 +1,5 @@
-#include "push_swap.c"
 
-void	rra_swap(t_list **stack_a)
+void	rra_swap(t_list *stack_a)
 {
 	
 	t_list	*last;

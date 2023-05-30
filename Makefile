@@ -10,7 +10,9 @@ push.c\
 swap.c\
 rotate.c\
 reverse.c\
-ft_swap5.c\
+ft_swap_5.c\
+input_checks.c\
+
 
 OBJS = $(SRCS:.c=.o)
 

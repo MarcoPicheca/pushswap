@@ -1,5 +1,3 @@
-#include "push_swap.h"
-
 void	ra_swap(t_list **stack_a)
 {
 	t_list	*last;
