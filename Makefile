@@ -12,25 +12,23 @@ rotate.c\
 reverse.c\
 ft_swap_5.c\
 input_checks.c\
-
-
-OBJS = $(SRCS:.c=.o)
+min_max.c\
 
 CC = gcc
 
 RM = rm -f
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
-NAME = pushswap.a
+NAME = pushswapp
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-			ar rcs $(NAME) $(OBJS)
+$(NAME):
+			$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 clean:
-			$(RM) $(OBJS)
+			$(RM)
 
 fclean:	clean
 			$(RM) $(NAME)

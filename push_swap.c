@@ -12,17 +12,37 @@
 
 #include "push_swap.h"
 
-t_list	**stackato(char *argv, t_list **stack_a)
+t_list	**stackato(char **argv, t_list **stack_a)
 {
 	t_list	*new_node;
 	int	data;
 
 	data = 0;
 	new_node = (t_list *)malloc(sizeof(t_list));
-	data = ft_atoi(argv);
+	if (!new_node)
+		return (NULL);
+	data = ft_atoi(*argv);
 	new_node->content = data;
 	ft_lstadd_back(stack_a, new_node);
 	return(stack_a);
+}
+
+void	check_in(t_list *stack_a, t_list *stack_b, char **argv, int i, int argc)
+{
+	while (i < argc)
+	{
+		if (ft_check(argv) == 1)
+			ft_free_error(stack_a, stack_b);
+		stackato(argv, &stack_a);
+		i++;
+	}
+	if (check_double(stack_a) == 1)
+		ft_free_error(stack_a, stack_b);
+	if (correct_combo(stack_a) == 1)
+	{
+		write(1, "Correct combo!", 15);
+		exit (0);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -32,34 +52,23 @@ int	main(int argc, char **argv)
 	int	i;
 	
 	i = 1;
-	stack_a = (t_list*)malloc((argc * (sizeof(t_list))));
-	stack_b = (t_list*)malloc((argc * (sizeof(t_list))));
+	stack_a = (t_list*)malloc(argc * (sizeof(t_list)));
+	stack_b = (t_list*)malloc(argc * (sizeof(t_list)));
+	if(!stack_b)
+		return (1);
 	if (argc <= 2)
 		return(0);
 	else
 	{
 		stack_a->content = ft_atoi(argv[i++]);
-		while (i < argc)
-		{
-			if (stackato(argv[i], &stack_a) == 1)
-			{
-				free (stack_a);
-				exit (0);
-			}
-			i++;
-		}
-		if (check_double(stack_a) == 1)
-			ft_free_error(&stack_a, &stack_b);
-		if (correct_combo(stack_a) == 1)
-		{
-			write(1, "Correct combo!", 15);
-			return (0);
-		}
+		check_in(stack_a, stack_b, argv, i, argc);
 	}
+	if (ft_lstsize(stack_a) == 2)
+		sa_swap(stack_a);
 	if(ft_lstsize(stack_a) <= 5)
-		ft_swap_5(&stack_a, &stack_b);
-	else
-		pushami(&stack_a, &stack_b);
+		ft_swap_5(stack_a, stack_b);
+	// else
+	// 	pushami(&stack_a, &stack_b);
 	free(stack_b);
 	return(0);
 }

@@ -36,33 +36,35 @@ int		ft_atoi(const char *str);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 
 // Le mosse
-void	rra_swap(t_list **stack_a);
-void	rrb_swap(t_list **stack_b);
-void	rrr_swap(t_list **head, t_list **stack_a);
-void	ra_swap(t_list **stack_a);
-void	rb_swap(t_list **stack_b);
-void	rr_swap(t_list **stack_a, t_list **stack_b);
-void	sa_swap(t_list **stack_a);
-void	sb_swap(t_list **stack_b);
-void	ss_swap(t_list **stack_a, t_list **stack_b);
-void	pa_swap(t_list **stack_a, t_list **stack_b);
-void	pb_swap(t_list **stack_a, t_list **stack_b);
+void	rra_swap(t_list *stack_a);
+void	rrb_swap(t_list *stack_b);
+void	rrr_swap(t_list *stack_a, t_list *stack_b);
+void	ra_swap(t_list *stack_a);
+void	rb_swap(t_list *stack_b);
+void	rr_swap(t_list *stack_a, t_list *stack_b);
+void	sa_swap(t_list *stack_a);
+void	sb_swap(t_list *stack_b);
+void	ss_swap(t_list *stack_a, t_list *stack_b);
+void	pa_swap(t_list *stack_a, t_list *stack_b);
+void	pb_swap(t_list *stack_a, t_list *stack_b);
 
 // le funzioni check
 int	check_double(t_list *stack_a);
 int	correct_combo(t_list *stack_a);
-int	ft_check(char *argv);
-void	ft_free_error(&stack_a, &stack_b);
+int	ft_check(char **argv);
+void	ft_free_error(t_list *stack_a, t_list *stack_b);
 
-// min e max in array
+// min e max in array + crea array
 int	min_int(int *j);
 int	max_int(int *j);
 int	*ft_arr_int(t_list *stack_a, int *j);
 
 // main function
-t_list	**stackato(char *argv, t_list **stack_a);
+t_list	**stackato(char **argv, t_list **stack_a);
 t_list	*ft_swap_5(t_list *stack_a, t_list *stack_b);
 void	swap3(t_list *stack_a);
+void	swap4(t_list *stack_a, t_list *stack_b);
+void	check_in(t_list *stack_a, t_list *stack_b, char **argv, int i, int argc);
 
 #endif
 

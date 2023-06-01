@@ -1,15 +1,23 @@
 #include "push_swap.h"
 
-int	ft_check(char *argv)
+int	ft_check(char **argv)
 {
 	int	i;
-	i = 0;
+	int j;
 
-	while (argv[i])
-		if ((argv[i] >= '0' && argv[i] <= '9') || argv[i] == 45)
-			i++;
-		else
-			return(1);
+	j = 1;
+	while (argv[j])
+	{
+		i = 0;
+		while (argv[j][i])
+		{
+			if ((argv[j][i] >= '0' && argv[j][i] <= '9') || argv[j][i] == 45)
+				i++;
+			else
+				return(1);
+		}
+		j++;
+	}
 	return (0);
 }
 
@@ -22,12 +30,13 @@ int	check_double(t_list *stack_a)
 	head = stack_a;
 	while (head != NULL)
 	{
-		while (tmp->content != head->content && tmp != NULL)
-			tmp = tmp->next;
+		tmp = head->next;
+		// while (tmp->content != head->content && tmp != NULL)
+		// 	tmp = tmp->next;
 		if (tmp->content == head->content)
 			return (1);
-		else
-			tmp = stack_a->next;
+		// else
+		// 	tmp = stack_a->next;
 		head = head-> next;
 	}
 	return (0);
