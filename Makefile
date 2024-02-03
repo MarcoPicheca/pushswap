@@ -6,15 +6,16 @@
 #    By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 12:00:18 by mapichec          #+#    #+#              #
-#    Updated: 2024/02/03 10:23:26 by mapichec         ###   ########.fr        #
+#    Updated: 2024/02/03 12:18:11 by mapichec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRC = ft_split.c \
-      lib_utils.c \
-      lib_utils2.c \
+      list_utils.c \
+      libft_utils.c \
+	  ft_free.c \
       main.c
 
 OBJ = $(SRC:.c=.o)
@@ -37,11 +38,11 @@ printf:
 	@echo "ft_printf compiled --> archive created"
 
 clean:
-	@make clean -C ft_printf
+	@make clean -sC ft_printf
 	rm -rf $(OBJ)
 
 fclean: clean
-	@make fclean -C ft_printf
+	@make fclean -sC ft_printf
 	rm -rf $(NAME)
 
 re: fclean all

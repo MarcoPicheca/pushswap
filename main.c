@@ -6,50 +6,17 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:01:32 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/03 11:43:39 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/03 12:47:48 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free_stack(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*node;
-
-	if ((*stack_a)->next != NULL && (*stack_a))
-		node = (*stack_a)->next;
-	else
-		node = NULL;
-	while ((*stack_a))
-	{
-		free((*stack_a));
-		(*stack_a) = NULL;
-		if (node)
-			(*stack_a) = node;
-		if (node && node->next)
-			node = node->next;
-		else
-			node = NULL;
-	}
-	if ((*stack_b) && (*stack_b)->next)
-		node = (*stack_b)->next;
-	while ((*stack_b) != NULL)
-	{
-		free((*stack_b));
-		if (node)
-			(*stack_b) = node;
-		if (node && node->next)
-			node = node->next;
-		else
-			node = NULL;
-	}
-}
-
 int	add_to_stack(char *arg, t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node;
 
-	node = ft_lstnew(ft_atoi(arg));
+	node = ft_lstnew(ft_atoil(arg));
 	if (!node)
 	{
 		ft_free_stack(stack_a, stack_b);
@@ -79,44 +46,56 @@ int	split_add_stack(char *arg, t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
+int	gen_stack(t_list **stack_a, t_list **stack_b, char **av)
+{
+	int		i;
+	
+	i = 1;
+	while (av[i])
+	{
+		if (ft_isdigit(av[i]))
+		{
+			ft_free_stack(&stack_a, &stack_b);
+			ft_printf("ERR: caratteri non numerici, spazi o segni");
+			return (1);
+		}
+		if (ft_isspace(av[i]))
+		{
+			if (split_add_stack(av[i], &stack_a, &stack_b))
+			{
+				ft_printf("ERR: creazione stack")
+				return (1);
+			}
+		}
+		else
+		{
+			if (add_to_stack(av[i], &stack_a, &stack_b))
+			{
+				ft_printf("ERR: creazione stack");
+				return (1);
+			}
+		}
+		i++;
+	}
+	return (0);
+}
+
 /* TODO: 
-		- provare se il controllo dell'input e se la creazione 
-			della lista funziona
-		- sistemare questione makefile e compilazione*/
+		- creazione check doppi e numeri maggiori MAXITN e minori MININT*/
 
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		i;
 
 	i = 1;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (ac == 1)
 		return (0);
-	while (av[i])
-	{
-		// controllo che ci siano solo numeri, '+', '-' o spazi negli args
-		if (ft_isdigit(av[i]))
-		{
-			ft_free_stack(&stack_a, &stack_b);
-			return (ft_printf("ERR: caratteri non numerici, spazi o segni"));
-		}
-		// controlla se ci sono spazi enell'argomento e lo manda a
-		// splittare e aggiungere alla lista
-		if (ft_isspace(av[i]))
-		{
-			if (split_add_stack(av[i], &stack_a, &stack_b))
-				return (ft_printf("ERR: creazione stack"));
-		}
-		// aggiunta a stack in altri casi
-		else
-		{
-			if (add_to_stack(av[i], &stack_a, &stack_b))
-				return (ft_printf("ERR: creazione stack"));
-		}
-		i++;
-	}
+	if (gen_stack(&stack_a, &stack_b, av))
+		return (0);
+	if (check_double(&stack_a) || check_max_min(&stack_a))
+		return (0);
 	return (0);
 }

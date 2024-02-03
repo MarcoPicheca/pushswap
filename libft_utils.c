@@ -6,17 +6,17 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 14:53:34 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/03 10:38:02 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/03 12:09:41 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoil(const char *nptr)
 {
-	int	i;
-	int	res;
-	int	sign;
+	int		i;
+	long	res;
+	int		sign;
 
 	i = 0;
 	sign = 1;
