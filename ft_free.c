@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:16:45 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/03 12:16:50 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:48:12 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,17 @@ void	ft_free_stack(t_list **stack_a, t_list **stack_b)
 			node = NULL;
 	}
 	ft_free_stack2(stack_b);
+}
+
+void	free_matrix(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i] != '\0')
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

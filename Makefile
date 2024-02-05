@@ -6,7 +6,7 @@
 #    By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 12:00:18 by mapichec          #+#    #+#              #
-#    Updated: 2024/02/03 12:18:11 by mapichec         ###   ########.fr        #
+#    Updated: 2024/02/05 12:34:43 by mapichec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC = ft_split.c \
       list_utils.c \
       libft_utils.c \
 	  ft_free.c \
+	  check_nbr.c \
       main.c
 
 OBJ = $(SRC:.c=.o)
