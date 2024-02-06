@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:30:57 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/05 15:46:43 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:26:10 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_list
 	int		content;
 	int		lis;
 	int		posix;
+	int		prev;
 	struct s_list	*next;
 }				t_list;
 
@@ -42,5 +43,8 @@ int		gen_stack(t_list **stack_a, t_list **stack_b, char **av);
 int		check_double(t_list **stack_a, t_list **stack_b);
 int		check_max_min(char *str);
 void	free_matrix(char **split);
+int		gen_lis(t_list **stack_a, t_list **stack_b);
+void	fill_stack(t_list **stack_a);
+int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
 
 #endif

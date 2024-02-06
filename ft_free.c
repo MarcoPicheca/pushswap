@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:16:45 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/05 15:48:12 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:48:11 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	free_matrix(char **split)
 	int	i;
 
 	i = 0;
-	while (split[i] != '\0')
+	while (split[i] != NULL)
 	{
 		free(split[i]);
 		i++;
