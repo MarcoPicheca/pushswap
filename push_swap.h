@@ -46,5 +46,6 @@ void	free_matrix(char **split);
 int		gen_lis(t_list **stack_a, t_list **stack_b);
 void	fill_stack(t_list **stack_a);
 int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
+int		check_sequence(t_list **stack_a);
 
 #endif

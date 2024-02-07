@@ -58,6 +58,7 @@ int	split_add_stack(char *arg, t_list **stack_a, t_list **stack_b)
 		}
 		i++;
 	}
+	free_matrix(split);
 	return (0);
 }
 
@@ -120,7 +121,7 @@ int	main(int ac, char **av)
 		ft_free_stack(&stack_a, &stack_b);
 		return (0);
 	}
-	if (check_double(&stack_a, &stack_b))
+	if (check_double(&stack_a, &stack_b) || check_sequence(&stack_a))
 		return (0);
 	if (gen_lis(&stack_a, &stack_b))
 		return (0);

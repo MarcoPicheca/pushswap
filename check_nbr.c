@@ -102,3 +102,22 @@ int	check_max_min(char *str)
 		return (1);
 	return (0);
 }
+
+int check_sequence(t_list **stack_a)
+{
+	t_list	*node;
+	t_list	*node1;
+
+	node = (*stack_a);
+	node1 = node->next;
+	while (node1)
+	{
+		if (node->content > node1->content)
+			return (0);
+		node = node->next;
+		node1 = node1->next;
+	}
+	ft_free_stack(stack_a, NULL);
+	ft_printf("ERR: correct sequence\n");
+	return (1);
+}

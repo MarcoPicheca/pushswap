@@ -16,6 +16,8 @@ void	ft_free_stack2(t_list **stack_b)
 {
 	t_list	*node;
 
+	if (!stack_b)
+		return ;
 	if ((*stack_b) && (*stack_b)->next)
 		node = (*stack_b)->next;
 	while ((*stack_b) != NULL)
@@ -34,6 +36,8 @@ void	ft_free_stack(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node;
 
+	if (!stack_a)
+		return ;
 	if ((*stack_a)->next != NULL && (*stack_a))
 		node = (*stack_a)->next;
 	else
