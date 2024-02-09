@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:27:26 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/06 16:37:35 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:59:18 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ void	fill_stack(t_list **stack_a)
 		node->lis = 1;
 		node->posix = i++;
 		node->prev = -1;
+		node = node->next;
+	}	
+}
+
+void	posix_gen(t_list **stack)
+{
+	t_list	*node;
+	int		i;
+
+	node = (*stack);
+	i = 0;
+	while (node != NULL)
+	{
+		node->posix = i++;
 		node = node->next;
 	}	
 }

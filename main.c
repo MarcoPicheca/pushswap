@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:01:32 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/06 18:20:32 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:44:15 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,15 @@ void	ft_print_list(t_list **stack_a)
 	{
 		ft_printf("nodo[%d] = num[%d] = lis [%d] = prev [%d]\n", node->posix, node->content, node->lis, node->prev);
 		node = node->next;
-		i++;		
+		i++;
 	}
+	node = (*stack_a);
+	ft_printf("list size %d\n", ft_lstsize(node));
 }
 
 /*
-TODO: creazione mosse e stack_a con lis
+TODO:	problematiche su getione 4 numeri e finire ordinamento a 5 numeri.
+		gestione LIS e push. creazione move-a e move-b.
 */
 
 int	main(int ac, char **av)
@@ -123,8 +126,13 @@ int	main(int ac, char **av)
 	}
 	if (check_double(&stack_a, &stack_b) || check_sequence(&stack_a))
 		return (0);
-	if (gen_lis(&stack_a, &stack_b))
+	if (ft_lstsize((stack_a)) <= 5
+		&& lst_less_5(&stack_a, &stack_b, ft_lstsize(stack_a)))
+	{
+		ft_print_list(&stack_a);
 		return (0);
-	ft_print_list(&stack_a);
+	}
+	else if (gen_lis(&stack_a, &stack_b))
+		return (0);
 	return (0);
 }

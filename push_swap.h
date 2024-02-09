@@ -6,17 +6,17 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:30:57 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/06 16:26:10 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:42:52 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-#include <stdio.h>
-#include <limits.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "ft_printf/ft_printf.h"
+# include <stdio.h>
+# include <limits.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "ft_printf/ft_printf.h"
 
 typedef struct s_list
 {
@@ -47,5 +47,20 @@ int		gen_lis(t_list **stack_a, t_list **stack_b);
 void	fill_stack(t_list **stack_a);
 int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
 int		check_sequence(t_list **stack_a);
+int		lst_less_5(t_list **stack_a, t_list **stack_b, int size);
+void	posix_gen(t_list **stack_a);
+
+// mosse
+void	pb(t_list **stack_a, t_list **stack_b);
+void	pa(t_list **stack_a, t_list **stack_b);
+int		sa(t_list **stack_a, int flag);
+int		sb(t_list **stack_b, int flag);
+int		ss(t_list **stack_a, t_list **stack_b);
+int		ra(t_list **stack_a, int flag);
+int		rb(t_list **stack_b, int flag);
+int		rr(t_list **stack_a, t_list **stack_b);
+int		rra(t_list **stack_a, int flag);
+int		rrb(t_list **stack_b, int flag);
+int		rrr(t_list **stack_a, t_list **stack_b);
 
 #endif

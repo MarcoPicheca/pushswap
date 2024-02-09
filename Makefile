@@ -6,7 +6,7 @@
 #    By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 12:00:18 by mapichec          #+#    #+#              #
-#    Updated: 2024/02/06 14:49:14 by mapichec         ###   ########.fr        #
+#    Updated: 2024/02/09 11:04:23 by mapichec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,11 @@ SRC = ft_split.c \
 	  ft_free.c \
 	  check_nbr.c \
 	  gen_lis.c \
+	  five_nbr.c \
+	  push.c \
+	  swap.c \
+	  rotate.c \
+	  reverse.c \
       main.c
 
 OBJ = $(SRC:.c=.o)

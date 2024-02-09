@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_utils.c                                        :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:41:16 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/02 11:43:30 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:40:41 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,6 @@ t_list	*ft_lstlast(t_list *lst)
 		lst = lst->next;
 	}
 	return (lst);
-}
-
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (*lst && new)
-	{
-		new->next = (*lst);
-		(*lst) = new;
-	}
-	else
-		*lst = new;
 }
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
