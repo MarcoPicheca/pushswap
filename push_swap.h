@@ -30,7 +30,6 @@ typedef struct s_list
 t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int		ft_atoi(const char *nptr);
 int		ft_isdigit(char *str);
@@ -39,7 +38,7 @@ char	**ft_split(const char *s, char c);
 size_t	ft_strlen(const char *str);
 void	ft_free_stack2(t_list **stack_b);
 void	ft_free_stack(t_list **stack_a, t_list **stack_b);
-int		gen_stack(t_list **stack_a, t_list **stack_b, char **av);
+int		gen_stack(t_list **stack_a, char **av);
 int		check_double(t_list **stack_a, t_list **stack_b);
 int		check_max_min(char *str);
 void	free_matrix(char **split);
@@ -49,6 +48,13 @@ int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
 int		check_sequence(t_list **stack_a);
 int		lst_less_5(t_list **stack_a, t_list **stack_b, int size);
 void	posix_gen(t_list **stack_a);
+int		add_to_stack(char *arg, t_list **stack_a);
+int		split_add_stack(char *arg, t_list **stack_a);
+int		ft_lst_5(t_list **stack_a, t_list **stack_b);
+int		ft_lst_3(t_list **stack);
+t_list	*find_major(t_list **stack_a, t_list **stack_b);
+int		ft_lst_4(t_list **stack_a, t_list **stack_b);
+t_list	*penultimo(t_list *stack);
 
 // mosse
 void	pb(t_list **stack_a, t_list **stack_b);

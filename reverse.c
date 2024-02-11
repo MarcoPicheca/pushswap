@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+t_list	*penultimo(t_list *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
+
 int	rra(t_list **stack_a, int flag)
 {
 	t_list	*last;
@@ -24,14 +33,11 @@ int	rra(t_list **stack_a, int flag)
 		ft_printf("rra\n");
 		return (sa(stack_a, 1));
 	}
-	tmp = (*stack_a);
-	last = ft_lstlast(tmp);
-	tmp = (*stack_a);
-	while (tmp->posix != (last->posix - 1))
-		tmp = tmp->next;
+	tmp = penultimo((*stack_a));
+	last = ft_lstlast((*stack_a));
 	last->next = (*stack_a);
-	(*stack_a) = last;
 	tmp->next = NULL;
+	(*stack_a) = last;
 	if (flag == 0)
 		ft_printf("rra\n");
 	posix_gen(stack_a);
@@ -48,16 +54,13 @@ int	rrb(t_list **stack_b, int flag)
 	if (ft_lstsize((*stack_b)) == 2)
 	{
 		ft_printf("rrb\n");
-		return (sb(stack_b, 1));
+		return (sa(stack_b, 1));
 	}
-	tmp = (*stack_b);
-	last = ft_lstlast(tmp);
-	tmp = (*stack_b);
-	while (tmp->posix != (last->posix - 1))
-		tmp = tmp->next;
+	tmp = penultimo((*stack_b));
+	last = ft_lstlast((*stack_b));
 	last->next = (*stack_b);
-	(*stack_b) = last;
 	tmp->next = NULL;
+	(*stack_b) = last;
 	if (flag == 0)
 		ft_printf("rrb\n");
 	posix_gen(stack_b);

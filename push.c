@@ -14,38 +14,37 @@
 
 void	pb(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*node_a;
+	t_list	*tmp;
 
-	node_a = (*stack_a);
-	if (stack_b == NULL)
+	if (*stack_a == NULL)
+		return ;
+	tmp = (*stack_a);
+	if (!stack_b || !(*stack_b))
 	{
-		(*stack_a)->next = node_a->next;
-		node_a->next = NULL;
-		(*stack_b)->next = node_a;
+		(*stack_b) = ft_lstnew((*stack_a)->content);
+		(*stack_a) = (*stack_a)->next;
+		free(tmp);
+		ft_printf("pb\n");
+		return ;
 	}
-	(*stack_a)->next = node_a->next;
-	node_a->next = (*stack_b)->next;
-	(*stack_b)->next = node_a;
+	tmp = (*stack_a);
+	(*stack_a) = (*stack_a)->next;
+	tmp->next = (*stack_b);
+	(*stack_b) = tmp;
 	ft_printf("pb\n");
-	posix_gen(stack_a);
-	posix_gen(stack_b);
+	return ;
 }
 
 void	pa(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*node_b;
+	t_list	*tmp;
 
-	node_b = (*stack_b);
-	if (stack_a == NULL)
-	{
-		(*stack_b)->next = node_b->next;
-		node_b->next = NULL;
-		(*stack_a)->next = node_b;
-	}
-	(*stack_b)->next = node_b->next;
-	node_b->next = (*stack_a)->next;
-	(*stack_a)->next = node_b;
+	if (*stack_b == NULL)
+		return ;
+	tmp = *stack_b;
+	*stack_b = (*stack_b)->next;
+	tmp->next = *stack_a;
+	*stack_a = tmp;
 	ft_printf("pa\n");
-	posix_gen(stack_a);
-	posix_gen(stack_b);
+	return ;
 }

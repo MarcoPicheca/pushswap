@@ -12,15 +12,13 @@
 
 #include "push_swap.h"
 
-int	add_to_stack(char *arg, t_list **stack_a, t_list **stack_b)
+int	add_to_stack(char *arg, t_list **stack_a)
 {
 	t_list	*node;
 
 	
 	if (ft_strlen(arg) > 11)
 		return (1);
-	if (!(*stack_b))
-		stack_b = NULL;
 	if (ft_strlen(arg) == 11 || ft_strlen(arg) == 10)
 	{
 		if (check_max_min(arg))
@@ -36,7 +34,7 @@ int	add_to_stack(char *arg, t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-int	split_add_stack(char *arg, t_list **stack_a, t_list **stack_b)
+int	split_add_stack(char *arg, t_list **stack_a)
 {
 	char	**split;
 	int		i;
@@ -50,7 +48,7 @@ int	split_add_stack(char *arg, t_list **stack_a, t_list **stack_b)
 	}
 	while (split[i] != NULL)
 	{
-		if (add_to_stack(split[i], stack_a, stack_b))
+		if (add_to_stack(split[i], stack_a))
 		{
 			ft_printf("ERR: creazione stack");
 			free_matrix(split);
@@ -62,7 +60,7 @@ int	split_add_stack(char *arg, t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-int	gen_stack(t_list **stack_a, t_list **stack_b, char **av)
+int	gen_stack(t_list **stack_a, char **av)
 {
 	int		i;
 	
@@ -76,12 +74,12 @@ int	gen_stack(t_list **stack_a, t_list **stack_b, char **av)
 		}
 		if (ft_isspace(av[i]))
 		{
-			if (split_add_stack(av[i], stack_a, stack_b))
+			if (split_add_stack(av[i], stack_a))
 				return (1);
 		}
 		else
 		{
-			if (add_to_stack(av[i], stack_a, stack_b))
+			if (add_to_stack(av[i], stack_a))
 				return (1);
 		}
 		i++;
@@ -89,7 +87,7 @@ int	gen_stack(t_list **stack_a, t_list **stack_b, char **av)
 	return (0);
 }
 
-void	ft_print_list(t_list **stack_a)
+void	ft_print_list(t_list **stack_a, t_list **stack_b)
 {
 	t_list *node;
 	int i = 0;
@@ -101,8 +99,11 @@ void	ft_print_list(t_list **stack_a)
 		node = node->next;
 		i++;
 	}
-	node = (*stack_a);
-	ft_printf("list size %d\n", ft_lstsize(node));
+	if (stack_b)
+		stack_b = NULL;
+	/* 
+	node = (*stack_b);
+	ft_printf("\nstack_b %d\n", node->content); */
 }
 
 /*
@@ -119,17 +120,17 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	if (ac == 1)
 		return (0);
-	if (gen_stack(&stack_a, &stack_b, av) == 1)
+	if (gen_stack(&stack_a, av) == 1)
 	{
-		ft_free_stack(&stack_a, &stack_b);
+		ft_free_stack(&stack_a, NULL);
 		return (0);
 	}
-	if (check_double(&stack_a, &stack_b) || check_sequence(&stack_a))
+	if (check_double(&stack_a, NULL) || check_sequence(&stack_a))
 		return (0);
 	if (ft_lstsize((stack_a)) <= 5
 		&& lst_less_5(&stack_a, &stack_b, ft_lstsize(stack_a)))
 	{
-		ft_print_list(&stack_a);
+		ft_print_list(&stack_a, &stack_b);
 		return (0);
 	}
 	else if (gen_lis(&stack_a, &stack_b))

@@ -32,11 +32,12 @@ int	ft_lst_3(t_list **stack)
 		ra(stack, 0);
 		sa(stack, 0);
 	}
-	else if (one < three && one < two)
+	else if (one < three && one < two && two > three)
 	{
 		rra(stack, 0);
 		sa(stack, 0);
 	}
+	ft_printf("fine sistem 3\n[%d][%d][%d]\n	", (*stack)->content, (*stack)->next->content, (*stack)->next->next->content);
 	return (0);
 }
 
@@ -73,23 +74,57 @@ int	ft_lst_4(t_list **stack_a, t_list **stack_b)
 		ra(stack_a, 0);
 		i++;		
 	}
-	while (i > 0)	
+	pa(stack_a, stack_b);
+	while (i > 0)
+	{
 		rra(stack_a, 0);
+		i--;
+	}
+	return (0);
+}
+
+int	ft_lst_5(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*node;
+	int		i;
+
+	pb(stack_a, stack_b);
+	ft_lst_4(stack_a, stack_b);
+	node = find_major(stack_a, stack_b);
+	if (node == NULL)
+	{
+		pa(stack_a, stack_b);
+		return (ra(stack_a, 0));
+	}
+	i = 0;
+	while ((*stack_a)->content != node->content)
+	{
+		if (node->posix < ft_lstsize((*stack_a)))
+			ra(stack_a, 0);
+		else if (node->posix > ft_lstsize((*stack_a)))
+			rra(stack_a, 0);
+		// ra(stack_a, 0);
+		i++;		
+	}
+	pa(stack_a, stack_b);
+	while (i > 0)
+	{
+		rra(stack_a, 0);
+		i--;
+	}
 	return (0);
 }
 
 int		lst_less_5(t_list **stack_a, t_list **stack_b, int size)
 {
 	posix_gen(stack_a);
-	if (stack_b)
-		stack_b = NULL;
 	if (size == 2)
 		sa(stack_a, 0);
 	if (size == 3)
 		ft_lst_3(stack_a);
 	if (size == 4)
 		ft_lst_4(stack_a, stack_b);
-	// if (size == 5)
-	// 	return (ft_lst_5(stack_a, stack_b));
+	if (size == 5)
+		ft_lst_5(stack_a, stack_b);
 	return (1);
 }
