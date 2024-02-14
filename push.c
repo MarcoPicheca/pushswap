@@ -31,6 +31,7 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	(*stack_a) = (*stack_a)->next;
 	tmp->next = (*stack_b);
 	(*stack_b) = tmp;
+	posix_gen(stack_a);
 	ft_printf("pb\n");
 	return ;
 }
@@ -45,6 +46,7 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	*stack_b = (*stack_b)->next;
 	tmp->next = *stack_a;
 	*stack_a = tmp;
+	posix_gen(stack_a);
 	ft_printf("pa\n");
 	return ;
 }

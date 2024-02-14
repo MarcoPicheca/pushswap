@@ -53,8 +53,13 @@ int		split_add_stack(char *arg, t_list **stack_a);
 int		ft_lst_5(t_list **stack_a, t_list **stack_b);
 int		ft_lst_3(t_list **stack);
 t_list	*find_major(t_list **stack_a, t_list **stack_b);
-int		ft_lst_4(t_list **stack_a, t_list **stack_b);
+int		ft_lst_4(t_list **stack_a, t_list **stack_b, int flag);
 t_list	*penultimo(t_list *stack);
+void	ft_print_list(t_list **stack_a, t_list **stack_b);
+int		first_roll(t_list **stack_a, t_list *node);
+void	second_roll(t_list **stack_a, int i);
+void	corr_sequence(t_list **stack_a);
+void	sequence_roll(t_list **stack_a, int i, int g);
 
 // mosse
 void	pb(t_list **stack_a, t_list **stack_b);

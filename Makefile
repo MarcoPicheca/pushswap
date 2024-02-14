@@ -19,6 +19,7 @@ SRC = ft_split.c \
 	  check_nbr.c \
 	  gen_lis.c \
 	  five_nbr.c \
+	  five_nbr2.c \
 	  push.c \
 	  swap.c \
 	  rotate.c \

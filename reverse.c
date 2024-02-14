@@ -71,6 +71,7 @@ int	rrr(t_list **stack_a, t_list **stack_b)
 {
 	if (rra(stack_a, 1) || rrb(stack_b, 1))
 		return (1);
+	posix_gen(stack_a);
 	ft_printf("rrr\n");
 	return (0);
 }
