@@ -82,9 +82,10 @@ int		rrb(t_list **stack_b, int flag);
 int		rrr(t_list **stack_a, t_list **stack_b);
 
 // lis algorithm
-int		gen_lis(t_list **stack_a, t_list **stack_b);
+int		gen_lis(t_list **stack_a);
 int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
 void	posix_gen(t_list **stack_a);
 void	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis);
+void	from_a_to_b2(t_list *node, int max_lis);
 
 #endif

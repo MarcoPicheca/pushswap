@@ -90,15 +90,21 @@ int	gen_stack(t_list **stack_a, char **av)
 void	ft_print_list(t_list **stack_a, t_list **stack_b)
 {
 	t_list *node;
+	t_list *node_b;
 	int i = 0;
 
 	node = (*stack_a);
+	node_b = (*stack_b);
 	while (node != NULL)
 	{
-		ft_printf("nodo[%d] = num[%d] = lis [%d] = prev [%d]\n", node->posix, node->content, node->lis, node->prev);
-		if (node->pre)
-			ft_printf("node pre [%d]\n", node->pre->content);
+		if (node)
+			ft_printf("STACK_A : nodo[%d] = num[%d]\t", node->posix, node->content);
+		if (node_b)
+			ft_printf("STACK_B : nodo[%d] = num[%d]\n", node_b->posix, node_b->content);
+		// if (node->pre)
+		// 	ft_printf("node pre [%d]\n", node->pre->content);
 		node = node->next;
+		node_b = node_b->next;
 		i++;
 	}
 	if (stack_b)
@@ -136,7 +142,7 @@ int	main(int ac, char **av)
 		ft_print_list(&stack_a, &stack_b);
 		return (0);
 	}
-	max_lis = gen_lis(&stack_a, &stack_b);
+	max_lis = gen_lis(&stack_a);
 	from_a_to_b(&stack_a, &stack_b, max_lis);
 	ft_print_list(&stack_a, &stack_b);
 	return (0);
