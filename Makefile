@@ -18,6 +18,7 @@ SRC = ft_split.c \
 	  ft_free.c \
 	  check_nbr.c \
 	  gen_lis.c \
+	  lis_moves.c \
 	  five_nbr.c \
 	  five_nbr2.c \
 	  push.c \

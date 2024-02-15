@@ -25,8 +25,10 @@ typedef struct s_list
 	int		posix;
 	int		prev;
 	struct s_list	*next;
+	struct s_list	*pre;
 }				t_list;
 
+// basic modified lib function
 t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
@@ -36,24 +38,29 @@ int		ft_isdigit(char *str);
 int		ft_isspace(char *str);
 char	**ft_split(const char *s, char c);
 size_t	ft_strlen(const char *str);
+
+// free stack and matrix functions
 void	ft_free_stack2(t_list **stack_b);
 void	ft_free_stack(t_list **stack_a, t_list **stack_b);
+void	free_matrix(char **split);
+
+// generation of the stack
 int		gen_stack(t_list **stack_a, char **av);
+int		split_add_stack(char *arg, t_list **stack_a);
+int		add_to_stack(char *arg, t_list **stack_a);
+void	fill_stack(t_list **stack_a);
+
+// basic checks
 int		check_double(t_list **stack_a, t_list **stack_b);
 int		check_max_min(char *str);
-void	free_matrix(char **split);
-int		gen_lis(t_list **stack_a, t_list **stack_b);
-void	fill_stack(t_list **stack_a);
-int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
 int		check_sequence(t_list **stack_a);
+
+// 3 to 5 elements
 int		lst_less_5(t_list **stack_a, t_list **stack_b, int size);
-void	posix_gen(t_list **stack_a);
-int		add_to_stack(char *arg, t_list **stack_a);
-int		split_add_stack(char *arg, t_list **stack_a);
 int		ft_lst_5(t_list **stack_a, t_list **stack_b);
 int		ft_lst_3(t_list **stack);
-t_list	*find_major(t_list **stack_a, t_list **stack_b);
 int		ft_lst_4(t_list **stack_a, t_list **stack_b, int flag);
+t_list	*find_major(t_list **stack_a, t_list **stack_b);
 t_list	*penultimo(t_list *stack);
 void	ft_print_list(t_list **stack_a, t_list **stack_b);
 int		first_roll(t_list **stack_a, t_list *node);
@@ -61,7 +68,7 @@ void	second_roll(t_list **stack_a, int i);
 void	corr_sequence(t_list **stack_a);
 void	sequence_roll(t_list **stack_a, int i, int g);
 
-// mosse
+// moves
 void	pb(t_list **stack_a, t_list **stack_b);
 void	pa(t_list **stack_a, t_list **stack_b);
 int		sa(t_list **stack_a, int flag);
@@ -73,5 +80,11 @@ int		rr(t_list **stack_a, t_list **stack_b);
 int		rra(t_list **stack_a, int flag);
 int		rrb(t_list **stack_b, int flag);
 int		rrr(t_list **stack_a, t_list **stack_b);
+
+// lis algorithm
+int		gen_lis(t_list **stack_a, t_list **stack_b);
+int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
+void	posix_gen(t_list **stack_a);
+void	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis);
 
 #endif

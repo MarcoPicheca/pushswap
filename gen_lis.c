@@ -67,8 +67,10 @@ int	gen_lis(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node;
 	t_list	*node1;
+	int		max_lis;
 	
 	node = (*stack_a);
+	max_lis = 0;
 	fill_stack(stack_a);
 	if (stack_b)
 		stack_b = NULL;
@@ -80,13 +82,14 @@ int	gen_lis(t_list **stack_a, t_list **stack_b)
 			if (node1->lis <= node->lis && node->content < node1->content)
 			{
 				node1->lis += 1;
+				max_lis = node1->lis;
 				node1->prev = ft_find_prev(stack_a, node1, node1->lis, node1->posix);
 			}
 			node1 = node1->next;
 		}
 		node = node->next;		
 	}
-	return (0);
+	return (max_lis);
 }
 
 /* 

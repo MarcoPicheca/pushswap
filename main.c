@@ -96,6 +96,8 @@ void	ft_print_list(t_list **stack_a, t_list **stack_b)
 	while (node != NULL)
 	{
 		ft_printf("nodo[%d] = num[%d] = lis [%d] = prev [%d]\n", node->posix, node->content, node->lis, node->prev);
+		if (node->pre)
+			ft_printf("node pre [%d]\n", node->pre->content);
 		node = node->next;
 		i++;
 	}
@@ -115,6 +117,7 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	int		max_lis;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -133,7 +136,8 @@ int	main(int ac, char **av)
 		ft_print_list(&stack_a, &stack_b);
 		return (0);
 	}
-	else if (gen_lis(&stack_a, &stack_b))
-		return (0);
+	max_lis = gen_lis(&stack_a, &stack_b);
+	from_a_to_b(&stack_a, &stack_b, max_lis);
+	ft_print_list(&stack_a, &stack_b);
 	return (0);
 }

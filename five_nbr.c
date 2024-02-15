@@ -106,5 +106,6 @@ int		lst_less_5(t_list **stack_a, t_list **stack_b, int size)
 		ft_lst_4(stack_a, stack_b, 0);
 	if (size == 5)
 		ft_lst_5(stack_a, stack_b);
+	ft_free_stack2(stack_b);
 	return (1);
 }
