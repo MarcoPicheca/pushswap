@@ -25,6 +25,7 @@ SRC = ft_split.c \
 	  swap.c \
 	  rotate.c \
 	  reverse.c \
+	  move_a_b.c \
       main.c
 
 OBJ = $(SRC:.c=.o)

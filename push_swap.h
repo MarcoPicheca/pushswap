@@ -43,6 +43,7 @@ size_t	ft_strlen(const char *str);
 void	ft_free_stack2(t_list **stack_b);
 void	ft_free_stack(t_list **stack_a, t_list **stack_b);
 void	free_matrix(char **split);
+void	free_matrix2(int **moves);
 
 // generation of the stack
 int		gen_stack(t_list **stack_a, char **av);
@@ -85,7 +86,13 @@ int		rrr(t_list **stack_a, t_list **stack_b);
 int		gen_lis(t_list **stack_a);
 int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
 void	posix_gen(t_list **stack_a);
-void	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis);
+int		from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis);
 void	from_a_to_b2(t_list *node, int max_lis);
+int		possible_sa(t_list **stack);
+
+// move_a_move_b system
+int		mov_a_mov_b(t_list **stack_a, t_list **stack_b);
+int		alloc_moves(int ***moves, t_list **stack_a, t_list **stack_b);
+void	gen_moves(int **moves, t_list **stack_a, t_list **stack_b);
 
 #endif

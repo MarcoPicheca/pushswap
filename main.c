@@ -95,28 +95,28 @@ void	ft_print_list(t_list **stack_a, t_list **stack_b)
 
 	node = (*stack_a);
 	node_b = (*stack_b);
-	while (node != NULL)
+	while (node != NULL || node_b != NULL)
 	{
 		if (node)
-			ft_printf("STACK_A : nodo[%d] = num[%d]\t", node->posix, node->content);
+		{
+			ft_printf("STACK_A : nodo[%d] = num[%d]\t", node->posix, node->content, node->lis);
+			node = node->next;
+		}
 		if (node_b)
+		{
 			ft_printf("STACK_B : nodo[%d] = num[%d]\n", node_b->posix, node_b->content);
-		// if (node->pre)
-		// 	ft_printf("node pre [%d]\n", node->pre->content);
-		node = node->next;
-		node_b = node_b->next;
+			node_b = node_b->next;
+		}
+		else
+			ft_printf("\n");
 		i++;
 	}
 	if (stack_b)
 		stack_b = NULL;
-	/* 
-	node = (*stack_b);
-	ft_printf("\nstack_b %d\n", node->content); */
 }
 
 /*
-TODO:	problematiche su getione 4 numeri e finire ordinamento a 5 numeri.
-		gestione LIS e push. creazione move-a e move-b.
+TODO:	creazione move-a e move-b.
 */
 
 int	main(int ac, char **av)
@@ -138,12 +138,10 @@ int	main(int ac, char **av)
 		return (0);
 	if (ft_lstsize((stack_a)) <= 5
 		&& lst_less_5(&stack_a, &stack_b, ft_lstsize(stack_a)))
-	{
-		ft_print_list(&stack_a, &stack_b);
 		return (0);
-	}
 	max_lis = gen_lis(&stack_a);
-	from_a_to_b(&stack_a, &stack_b, max_lis);
-	ft_print_list(&stack_a, &stack_b);
+	if (from_a_to_b(&stack_a, &stack_b, max_lis))
+		return (0);
+	// ft_print_list(&stack_a, &stack_b);
 	return (0);
 }

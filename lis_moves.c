@@ -53,21 +53,41 @@ int	lis_zero(t_list **stack_a)
 	return (0);
 }
 
-void	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis)
+int	possible_sa(t_list **stack)
+{
+	t_list	*node;
+
+	node = (*stack)->next;
+	if ((*stack)->content > node->content
+		&& node->next != NULL)
+	{
+		if (node->next->content > (*stack)->content)
+		{
+			(*stack)->lis = 0;
+			sa(stack, 0);
+			return (1);
+		}
+		else
+			return (0);
+	}
+	return (0);
+}
+
+int	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis)
 {
 	t_list	*node;
 
 	node = ft_lstlast((*stack_a));
 	from_a_to_b2(node, max_lis);
-	// lis_in_stack(stack_a, stack_b);
 	while (lis_zero(stack_a))
 	{
-		if ((*stack_a)->lis != 0)
+		if ((*stack_a)->lis != 0 && !possible_sa(stack_a))
 			pb(stack_a, stack_b);
-		rra(stack_a, 0);
+		else
+			rra(stack_a, 0);
 	}
 	posix_gen(stack_b);
+	if (mov_a_mov_b(stack_a, stack_b))
+		return (1);
+	return (0);
 }
-
-	// if (stack_b)
-	// 	stack_b = NULL;

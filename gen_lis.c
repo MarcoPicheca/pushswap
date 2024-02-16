@@ -78,7 +78,8 @@ int	gen_lis(t_list **stack_a)
 		while (node1 != NULL)
 		{
 			if (node1->lis <= node->lis
-				&& node->content < node1->content)
+				&& node->content < node1->content
+				&& (node1->lis + 1) >= max_lis)
 			{
 				node1->lis += 1;
 				max_lis = node1->lis;

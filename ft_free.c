@@ -68,3 +68,16 @@ void	free_matrix(char **split)
 	}
 	free(split);
 }
+
+void	free_matrix2(int **moves)
+{
+	int	i;
+
+	i = 0;
+	while (moves[i] != NULL)
+	{
+		free(moves[i]);
+		i++;
+	}
+	free(moves);
+}
