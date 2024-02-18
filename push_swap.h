@@ -94,5 +94,7 @@ int		possible_sa(t_list **stack);
 int		mov_a_mov_b(t_list **stack_a, t_list **stack_b);
 int		alloc_moves(int ***moves, t_list **stack_a, t_list **stack_b);
 void	gen_moves(int **moves, t_list **stack_a, t_list **stack_b);
+void	move_b(int **moves, t_list **stack_a, t_list **stack_b);
+int		find_move_b(int cont, t_list **stack_a);
 
 #endif

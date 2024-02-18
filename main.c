@@ -99,12 +99,12 @@ void	ft_print_list(t_list **stack_a, t_list **stack_b)
 	{
 		if (node)
 		{
-			ft_printf("STACK_A : nodo[%d] = num[%d]\t", node->posix, node->content, node->lis);
+			ft_printf("STACK_A : nodo[%d] = num[%d]", node->posix, node->content, node->lis);
 			node = node->next;
 		}
 		if (node_b)
 		{
-			ft_printf("STACK_B : nodo[%d] = num[%d]\n", node_b->posix, node_b->content);
+			ft_printf("\t\t\t\tSTACK_B : nodo[%d] = num[%d]\n", node_b->posix, node_b->content);
 			node_b = node_b->next;
 		}
 		else
