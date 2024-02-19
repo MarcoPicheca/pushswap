@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lis_moves.c                                        :+:      :+:    :+:   */
+/*   ft_move_a_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/09 18:41:44 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:16:11 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ int	alloc_moves(int ***moves, t_list **stack_a, t_list **stack_b)
 	if (!moves)
 	{
 		ft_free_stack(stack_a, stack_b);
-		free_matrix2(*moves);
 		return (0);
 	}
 	(*moves)[0] = (int *)malloc(sizeof(int) * ft_lstsize((*stack_b)));
 	(*moves)[1] = (int *)malloc(sizeof(int) * ft_lstsize((*stack_b)));
-	if (!moves[0] || !moves[1])
+	if (!(*moves)[0] || !(*moves)[1])
 	{
 		ft_free_stack(stack_a, stack_b);
 		free_matrix2(*moves);
@@ -59,7 +58,7 @@ int	find_move_b(int cont, t_list **stack_a)
 	return (0);
 }
 
-void	move_b(int **moves, t_list **stack_a, t_list **stack_b)
+int	move_b(int **moves, t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node_b;
 	int		i;
@@ -72,9 +71,16 @@ void	move_b(int **moves, t_list **stack_a, t_list **stack_b)
 		i++;
 		node_b = node_b->next;
 	}
+	if (!ft_move_c(moves, stack_a, stack_b))
+	{
+		ft_free_stack(stack_a, stack_b);
+		free_matrix2(moves);
+		return (0);
+	}
+	return (1);
 }
 
-void	gen_moves(int **moves, t_list **stack_a, t_list **stack_b)
+int	gen_moves(int **moves, t_list **stack_a, t_list **stack_b)
 {
 	int		half;
 	int		i;
@@ -94,31 +100,28 @@ void	gen_moves(int **moves, t_list **stack_a, t_list **stack_b)
 			moves[0][i++] = -1 * (half--);
 		node = node->next;
 	}
-	move_b(moves, stack_a, stack_b);
-	return ;
+	if (!move_b(moves, stack_a, stack_b))
+		return (0);	
+	return (1);
 }
 
 int	mov_a_mov_b(t_list **stack_a, t_list **stack_b)
 {
 	int	**moves;
-	t_list *node = (*stack_b);
-	int i = 0;
+	// t_list *node = (*stack_b);
+	// int i = 0;
 
 	moves = NULL;
-	while (stack_b != NULL)
+	while (stack_b != NULL && (*stack_b))
 	{
-		if (!alloc_moves(&moves, stack_a, stack_b))
+		if (!alloc_moves(&moves, stack_a, stack_b) || !gen_moves(moves, stack_a, stack_b))
 			return (0);
-		gen_moves(moves, stack_a, stack_b);
-		ft_print_list(stack_a, stack_b);
-		while (i < ft_lstsize((*stack_b)) && node)
-		{
-			printf("nodo [%d] = move_b [%d] = move_a [%d] = num [%d]\n", node->content, moves[1][i], moves[0][i], node->posix);
-			node = node->next;
-			i++;
-		}
-		// actual_movements(stack_a, stack_b, moves);
-		return (0);
+		// while (i < ft_lstsize((*stack_b)) && node)
+		// {
+		// 	printf("nodo [%d] = move_b [%d] = move_a [%d] = num [%d]\n", node->content, moves[1][i], moves[0][i], node->posix);
+		// 	node = node->next;
+		// 	i++;
+		// }
 		free_matrix2(moves);
 	}
 	return (1);

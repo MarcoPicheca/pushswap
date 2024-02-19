@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:04:28 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/09 12:59:42 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:14:19 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	tmp->next = (*stack_b);
 	(*stack_b) = tmp;
 	posix_gen(stack_a);
+	posix_gen(stack_b);
 	ft_printf("pb\n");
 	return ;
 }
@@ -47,6 +48,7 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	tmp->next = *stack_a;
 	*stack_a = tmp;
 	posix_gen(stack_a);
+	posix_gen(stack_b);
 	ft_printf("pa\n");
 	return ;
 }

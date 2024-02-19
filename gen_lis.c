@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:27:26 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/09 12:59:18 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:14:55 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	posix_gen(t_list **stack)
 	t_list	*node;
 	int		i;
 
+	if (!(*stack))
+		return ;
 	node = (*stack);
 	i = 0;
 	while (node != NULL)

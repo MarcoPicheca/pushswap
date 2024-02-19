@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:01:32 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/09 18:44:15 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:56:57 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	ft_print_list(t_list **stack_a, t_list **stack_b)
 
 	node = (*stack_a);
 	node_b = (*stack_b);
+	ft_printf("\nlistaccia\n");
 	while (node != NULL || node_b != NULL)
 	{
 		if (node)
@@ -102,9 +103,11 @@ void	ft_print_list(t_list **stack_a, t_list **stack_b)
 			ft_printf("STACK_A : nodo[%d] = num[%d]", node->posix, node->content, node->lis);
 			node = node->next;
 		}
+		if (!node)
+			ft_printf("\t\t\t");
 		if (node_b)
 		{
-			ft_printf("\t\t\t\tSTACK_B : nodo[%d] = num[%d]\n", node_b->posix, node_b->content);
+			ft_printf("\tSTACK_B : nodo[%d] = num[%d]\n", node_b->posix, node_b->content);
 			node_b = node_b->next;
 		}
 		else
@@ -116,7 +119,7 @@ void	ft_print_list(t_list **stack_a, t_list **stack_b)
 }
 
 /*
-TODO:	creazione move-a e move-b.
+TODO:	sistemare move_c e risolusione nel passaggio da b ad a piu' problemi di free
 */
 
 int	main(int ac, char **av)
@@ -141,7 +144,9 @@ int	main(int ac, char **av)
 		return (0);
 	max_lis = gen_lis(&stack_a);
 	if (from_a_to_b(&stack_a, &stack_b, max_lis))
-		return (0);
-	// ft_print_list(&stack_a, &stack_b);
+	{
+		ft_print_list(&stack_a, &stack_b);
+		return (0);	
+	}
 	return (0);
 }

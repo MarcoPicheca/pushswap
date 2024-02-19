@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:30:57 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/09 14:42:52 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:37:24 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,9 @@ int		possible_sa(t_list **stack);
 // move_a_move_b system
 int		mov_a_mov_b(t_list **stack_a, t_list **stack_b);
 int		alloc_moves(int ***moves, t_list **stack_a, t_list **stack_b);
-void	gen_moves(int **moves, t_list **stack_a, t_list **stack_b);
-void	move_b(int **moves, t_list **stack_a, t_list **stack_b);
+int		gen_moves(int **moves, t_list **stack_a, t_list **stack_b);
+int		move_b(int **moves, t_list **stack_a, t_list **stack_b);
 int		find_move_b(int cont, t_list **stack_a);
+int		ft_move_c(int **moves, t_list **stack_a, t_list **stack_b);
 
 #endif

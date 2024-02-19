@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/09 18:41:44 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:13:56 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis)
 		else
 			rra(stack_a, 0);
 	}
-	posix_gen(stack_b);
 	if (mov_a_mov_b(stack_a, stack_b))
 		return (1);
 	return (0);

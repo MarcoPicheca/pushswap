@@ -6,7 +6,7 @@
 #    By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 12:00:18 by mapichec          #+#    #+#              #
-#    Updated: 2024/02/09 11:04:23 by mapichec         ###   ########.fr        #
+#    Updated: 2024/02/19 12:17:57 by mapichec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC = ft_split.c \
 	  swap.c \
 	  rotate.c \
 	  reverse.c \
-	  move_a_b.c \
+	  ft_move_a_b.c \
+	  ft_solve_move_c.c \
       main.c
 
 OBJ = $(SRC:.c=.o)

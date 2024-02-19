@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:16:45 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/06 14:48:11 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:27:54 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	free_matrix2(int **moves)
 	int	i;
 
 	i = 0;
-	while (moves[i] != NULL)
+	while (moves[i] != NULL && i < 2)
 	{
 		free(moves[i]);
 		i++;
