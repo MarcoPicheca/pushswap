@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:16:45 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/19 15:27:54 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:46:34 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,9 @@ void	free_matrix(char **split)
 	free(split);
 }
 
-void	free_matrix2(int **moves)
+void	free_moves(int *move_a, int *move_b, int *move_c)
 {
-	int	i;
-
-	i = 0;
-	while (moves[i] != NULL && i < 2)
-	{
-		free(moves[i]);
-		i++;
-	}
-	free(moves);
+	free(move_a);
+	free(move_b);
+	free(move_c);
 }

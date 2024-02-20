@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:05:04 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/19 14:36:39 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:30:30 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,6 @@ int	rb(t_list **stack_b, int flag)
 	testa = (*stack_b);
 	tmp = (*stack_b);
 	last = ft_lstlast(tmp);
-	// if (ft_lstsize((*stack_b)) <= 1)
-	// 	return (1);
-	// if (ft_lstsize((*stack_b)) == 2)
-	// {
-	// 	ft_printf("rb\n");
-	// 	return (sb(stack_b, 1));
-	// }
 	if (!(*stack_b))
 		return (1);
 	*stack_b = testa->next;
@@ -68,6 +61,6 @@ int	rr(t_list **stack_a, t_list **stack_b)
 {
 	if (ra(stack_a, 1) || rb(stack_b, 1))
 		return (1);
-	ft_printf("rr\n");
+	// ft_printf("rr\n");
 	return(0);
 }

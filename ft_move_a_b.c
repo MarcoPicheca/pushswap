@@ -6,29 +6,31 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/19 16:16:11 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:51:51 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	alloc_moves(int ***moves, t_list **stack_a, t_list **stack_b)
+int	find_max_mov(t_list **stack_a)
 {
-	(*moves) = (int **)malloc(sizeof(int *) * 2);
-	if (!moves)
+	t_list			*node_a;
+	int				pos;
+	long long		g;
+
+	g = 2147483648;
+	pos = -1;
+	node_a = (*stack_a);
+	while (node_a != NULL)
 	{
-		ft_free_stack(stack_a, stack_b);
-		return (0);
+		if (node_a->content < g)
+		{
+			g = node_a->content;
+			pos = node_a->posix;
+		}
+		node_a = node_a->next;
 	}
-	(*moves)[0] = (int *)malloc(sizeof(int) * ft_lstsize((*stack_b)));
-	(*moves)[1] = (int *)malloc(sizeof(int) * ft_lstsize((*stack_b)));
-	if (!(*moves)[0] || !(*moves)[1])
-	{
-		ft_free_stack(stack_a, stack_b);
-		free_matrix2(*moves);
-		return (0);
-	}
-	return (1);
+	return (pos);
 }
 
 int	find_move_b(int cont, t_list **stack_a)
@@ -38,6 +40,7 @@ int	find_move_b(int cont, t_list **stack_a)
 	long long		g;
 
 	g = 2147483648;
+	pos = -1;
 	node_a = (*stack_a);
 	while (node_a != NULL)
 	{
@@ -48,6 +51,8 @@ int	find_move_b(int cont, t_list **stack_a)
 		}
 		node_a = node_a->next;
 	}
+	if (pos == -1)
+		pos = find_max_mov(stack_a);
 	if (pos < (ft_lstsize((*stack_a)) / 2))
 		return (pos);
 	if (ft_lstsize((*stack_a)) % 2 != 0
@@ -58,7 +63,7 @@ int	find_move_b(int cont, t_list **stack_a)
 	return (0);
 }
 
-int	move_b(int **moves, t_list **stack_a, t_list **stack_b)
+int	gen_move_a(int *move_a, t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node_b;
 	int		i;
@@ -67,20 +72,14 @@ int	move_b(int **moves, t_list **stack_a, t_list **stack_b)
 	i = 0;
 	while (node_b != NULL)
 	{
-		moves[1][i] = find_move_b(node_b->content, stack_a);
+		move_a[i] = find_move_b(node_b->content, stack_a);
 		i++;
 		node_b = node_b->next;
-	}
-	if (!ft_move_c(moves, stack_a, stack_b))
-	{
-		ft_free_stack(stack_a, stack_b);
-		free_matrix2(moves);
-		return (0);
 	}
 	return (1);
 }
 
-int	gen_moves(int **moves, t_list **stack_a, t_list **stack_b)
+int	gen_move_b(int *move_b, t_list **stack_b)
 {
 	int		half;
 	int		i;
@@ -92,37 +91,35 @@ int	gen_moves(int **moves, t_list **stack_a, t_list **stack_b)
 	while (node != NULL)
 	{
 		if (i < (ft_lstsize((*stack_b)) / 2))
-			moves[0][i++] = half++;
+			move_b[i++] = half++;
 		if (ft_lstsize((*stack_b)) % 2 != 0
 			&& i == (ft_lstsize((*stack_b)) / 2))
-			moves[0][i++] = half;
+			move_b[i++] = half;
 		else if (i >= (ft_lstsize((*stack_b)) / 2))
-			moves[0][i++] = -1 * (half--);
+			move_b[i++] = -1 * (half--);
 		node = node->next;
 	}
-	if (!move_b(moves, stack_a, stack_b))
-		return (0);	
 	return (1);
 }
 
 int	mov_a_mov_b(t_list **stack_a, t_list **stack_b)
 {
-	int	**moves;
-	// t_list *node = (*stack_b);
-	// int i = 0;
+	int	*move_a;
+	int	*move_b;
+	int	*move_c;
 
-	moves = NULL;
 	while (stack_b != NULL && (*stack_b))
 	{
-		if (!alloc_moves(&moves, stack_a, stack_b) || !gen_moves(moves, stack_a, stack_b))
+		move_a = malloc(sizeof(int) * ft_lstsize((*stack_b)));
+		move_b = malloc(sizeof(int) * ft_lstsize((*stack_b)));
+		move_c = malloc(sizeof(int) * ft_lstsize((*stack_b)));
+		if (!move_a || !move_c || !move_b)
 			return (0);
-		// while (i < ft_lstsize((*stack_b)) && node)
-		// {
-		// 	printf("nodo [%d] = move_b [%d] = move_a [%d] = num [%d]\n", node->content, moves[1][i], moves[0][i], node->posix);
-		// 	node = node->next;
-		// 	i++;
-		// }
-		free_matrix2(moves);
+		gen_move_b(move_b, stack_b);
+		gen_move_a(move_a, stack_a, stack_b);
+		ft_move_c(move_a, move_b, move_c, stack_a, stack_b);
+		// ft_print_list(stack_a, stack_b);
+		free_moves(move_a, move_b, move_c);	
 	}
 	return (1);
 }

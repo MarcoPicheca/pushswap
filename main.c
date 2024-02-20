@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:01:32 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/19 16:56:57 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:23:40 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	ft_print_list(t_list **stack_a, t_list **stack_b)
 }
 
 /*
-TODO:	sistemare move_c e risolusione nel passaggio da b ad a piu' problemi di free
+TODO:	rifare move_a move_b e move_c
 */
 
 int	main(int ac, char **av)
@@ -143,10 +143,9 @@ int	main(int ac, char **av)
 		&& lst_less_5(&stack_a, &stack_b, ft_lstsize(stack_a)))
 		return (0);
 	max_lis = gen_lis(&stack_a);
-	if (from_a_to_b(&stack_a, &stack_b, max_lis))
-	{
-		ft_print_list(&stack_a, &stack_b);
-		return (0);	
-	}
+	// gen_lis(&stack_a);
+	from_a_to_b(&stack_a, &stack_b, max_lis);
+	ft_print_list(&stack_a, &stack_b);
+	ft_free_stack(&stack_a, &stack_b);
 	return (0);
 }

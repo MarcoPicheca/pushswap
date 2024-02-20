@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:04:28 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/19 14:14:19 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:09:21 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	pb(t_list **stack_a, t_list **stack_b)
 
 	if (*stack_a == NULL)
 		return ;
-	tmp = (*stack_a);
-	if (!stack_b || !(*stack_b))
-	{
+	// if (!stack_b || !(*stack_b))
+	// {
 		(*stack_b) = ft_lstnew((*stack_a)->content);
-		(*stack_a) = (*stack_a)->next;
-		free(tmp);
-		ft_printf("pb\n");
-		return ;
-	}
+	// 	(*stack_a) = (*stack_a)->next;
+	// 	free(tmp);
+	// 	ft_printf("pb\n");
+	// 	return ;
+	// }
+	// tmp = (*stack_a);
 	tmp = (*stack_a);
 	(*stack_a) = (*stack_a)->next;
 	tmp->next = (*stack_b);

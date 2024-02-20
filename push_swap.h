@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:30:57 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/19 13:37:24 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:27:30 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ size_t	ft_strlen(const char *str);
 void	ft_free_stack2(t_list **stack_b);
 void	ft_free_stack(t_list **stack_a, t_list **stack_b);
 void	free_matrix(char **split);
-void	free_matrix2(int **moves);
+void	free_moves(int *move_a, int *move_b, int *move_c);
 
 // generation of the stack
 int		gen_stack(t_list **stack_a, char **av);
@@ -92,10 +92,11 @@ int		possible_sa(t_list **stack);
 
 // move_a_move_b system
 int		mov_a_mov_b(t_list **stack_a, t_list **stack_b);
-int		alloc_moves(int ***moves, t_list **stack_a, t_list **stack_b);
-int		gen_moves(int **moves, t_list **stack_a, t_list **stack_b);
-int		move_b(int **moves, t_list **stack_a, t_list **stack_b);
+int		gen_move_b(int *move_b, t_list **stack_b);
+int		gen_move_a(int *move_a, t_list **stack_a, t_list **stack_b);
 int		find_move_b(int cont, t_list **stack_a);
-int		ft_move_c(int **moves, t_list **stack_a, t_list **stack_b);
+int		ft_move_c(int *move_a, int *move_b, int *move_c, t_list **stack_a, t_list **stack_b);
+void	actual_moves(int *move_a, int *move_b, int *move_c, t_list **stack_a, t_list **stack_b);
+void	from_b_to_a(int a, int b, t_list **stack_a, t_list **stack_b);
 
 #endif
