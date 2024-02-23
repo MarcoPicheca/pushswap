@@ -68,6 +68,25 @@ void	from_b_to_a(int a, int b, t_list **stack_a, t_list **stack_b)
 	pa(stack_a, stack_b);
 }
 
+// TODO: TOGLIERE
+void arr_print_c(int *move_c, int size)
+{
+	int i = 0;
+	while (i < size){
+		printf("%d = MOVE_C[%d]\n", i , move_c[i]);
+		i++;
+	}
+}
+
+void arr_print_a_b(int *move_a, int *move_b, int size)
+{
+	int i = 0;
+	while (i < size){
+		printf("%d = move_a[%d] = move_a[%d]\n", i , move_a[i], move_b[i]);
+		i++;
+	}
+}
+
 void	actual_moves(int *move_a, int *move_b, int *move_c, t_list **stack_a, t_list **stack_b)
 {
 	int	i;
@@ -86,6 +105,8 @@ void	actual_moves(int *move_a, int *move_b, int *move_c, t_list **stack_a, t_lis
 		}
 		i++;
 	}
+	arr_print_a_b(move_a, move_b, ft_lstsize((*stack_b)));
+	arr_print_c(move_c, ft_lstsize((*stack_b)));
 	from_b_to_a(move_a[j], move_b[j], stack_a, stack_b);
 }
 

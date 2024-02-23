@@ -18,15 +18,14 @@ void	pb(t_list **stack_a, t_list **stack_b)
 
 	if (*stack_a == NULL)
 		return ;
-	// if (!stack_b || !(*stack_b))
-	// {
+	if (!stack_b || !(*stack_b))
+	{
 		(*stack_b) = ft_lstnew((*stack_a)->content);
-	// 	(*stack_a) = (*stack_a)->next;
-	// 	free(tmp);
-	// 	ft_printf("pb\n");
-	// 	return ;
-	// }
-	// tmp = (*stack_a);
+		(*stack_a) = (*stack_a)->next;
+		ft_printf("pb\n");
+		return ;
+	}
+	tmp = (*stack_a);
 	tmp = (*stack_a);
 	(*stack_a) = (*stack_a)->next;
 	tmp->next = (*stack_b);

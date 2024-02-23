@@ -30,7 +30,7 @@ int	rra(t_list **stack_a, int flag)
 		return (1);
 	if (ft_lstsize((*stack_a)) == 2)
 	{
-		// ft_printf("rra\n");
+		ft_printf("rra\n");
 		return (sa(stack_a, 1));
 	}
 	tmp = penultimo((*stack_a));
@@ -39,7 +39,7 @@ int	rra(t_list **stack_a, int flag)
 	tmp->next = NULL;
 	(*stack_a) = last;
 	if (flag == 0)
-		// ft_printf("rra\n");
+		ft_printf("rra\n");
 	posix_gen(stack_a);
 	return (0);
 }

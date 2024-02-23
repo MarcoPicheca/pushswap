@@ -86,6 +86,7 @@ int	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis)
 		else
 			rra(stack_a, 0);
 	}
+	ft_print_list(stack_a, stack_b);
 	if (!mov_a_mov_b(stack_a, stack_b))
 	{
 		ft_free_stack(stack_a, stack_b);

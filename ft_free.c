@@ -69,9 +69,14 @@ void	free_matrix(char **split)
 	free(split);
 }
 
+// qui fallisce per non si sa cosa perchè memoria e puntatore sono corretti
 void	free_moves(int *move_a, int *move_b, int *move_c)
 {
-	free(move_a);
-	free(move_b);
-	free(move_c);
+	if (move_a)
+		free(move_a);
+	if (move_b)
+		free(move_b);
+	printf("%ld\n", sizeof(move_c));
+	if (move_c && *move_c)
+		free(move_c);
 }

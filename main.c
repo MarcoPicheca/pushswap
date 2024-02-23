@@ -114,8 +114,6 @@ void	ft_print_list(t_list **stack_a, t_list **stack_b)
 			ft_printf("\n");
 		i++;
 	}
-	if (stack_b)
-		stack_b = NULL;
 }
 
 /*

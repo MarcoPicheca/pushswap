@@ -102,6 +102,8 @@ int	gen_move_b(int *move_b, t_list **stack_b)
 	return (1);
 }
 
+
+
 int	mov_a_mov_b(t_list **stack_a, t_list **stack_b)
 {
 	int	*move_a;
