@@ -102,8 +102,6 @@ int	gen_move_b(int *move_b, t_list **stack_b)
 	return (1);
 }
 
-
-
 int	mov_a_mov_b(t_list **stack_a, t_list **stack_b)
 {
 	int	*move_a;
@@ -121,7 +119,8 @@ int	mov_a_mov_b(t_list **stack_a, t_list **stack_b)
 		gen_move_a(move_a, stack_a, stack_b);
 		ft_move_c(move_a, move_b, move_c, stack_a, stack_b);
 		// ft_print_list(stack_a, stack_b);
-		free_moves(move_a, move_b, move_c);	
+		free_moves(move_a, move_b, NULL);
+		free(move_c);
 	}
 	return (1);
 }

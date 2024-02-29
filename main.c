@@ -144,6 +144,5 @@ int	main(int ac, char **av)
 	// gen_lis(&stack_a);
 	from_a_to_b(&stack_a, &stack_b, max_lis);
 	ft_print_list(&stack_a, &stack_b);
-	ft_free_stack(&stack_a, &stack_b);
 	return (0);
 }

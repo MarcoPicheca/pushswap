@@ -18,16 +18,19 @@ SRC = ft_split.c \
 	  ft_free.c \
 	  check_nbr.c \
 	  gen_lis.c \
-	  lis_moves.c \
+	  lis_and_solve.c \
 	  five_nbr.c \
 	  five_nbr2.c \
 	  push.c \
 	  swap.c \
 	  rotate.c \
 	  reverse.c \
-	  ft_move_a_b.c \
-	  ft_solve_move_c.c \
-      main.c
+      main.c \
+	  list_moves.c \
+	  move_utils.c \
+	#   ft_move_a_b.c \
+	#   ft_solve_move_c.c \
+	
 
 OBJ = $(SRC:.c=.o)
 

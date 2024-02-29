@@ -28,6 +28,15 @@ typedef struct s_list
 	struct s_list	*pre;
 }				t_list;
 
+typedef struct s_moves
+{
+	int		move_a;
+	int		move_b;
+	int		move_c;
+	struct s_moves	*next;
+	struct s_moves	*prev;
+}				t_moves;
+
 // basic modified lib function
 t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list *lst);
@@ -90,13 +99,24 @@ int		from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis);
 void	from_a_to_b2(t_list *node, int max_lis);
 int		possible_sa(t_list **stack);
 
+// moves utils
+int		ft_lstsize2(t_moves *lst);
+t_moves	*ft_lstlast2(t_moves *lst);
+void	ft_lstadd_back2(t_moves **lst, t_moves *new);
+
 // move_a_move_b system
-int		mov_a_mov_b(t_list **stack_a, t_list **stack_b);
+/* int		mov_a_mov_b(t_list **stack_a, t_list **stack_b);
 int		gen_move_b(int *move_b, t_list **stack_b);
 int		gen_move_a(int *move_a, t_list **stack_a, t_list **stack_b);
 int		find_move_b(int cont, t_list **stack_a);
 int		ft_move_c(int *move_a, int *move_b, int *move_c, t_list **stack_a, t_list **stack_b);
 void	actual_moves(int *move_a, int *move_b, int *move_c, t_list **stack_a, t_list **stack_b);
-void	from_b_to_a(int a, int b, t_list **stack_a, t_list **stack_b);
+void	from_b_to_a(int a, int b, t_list **stack_a, t_list **stack_b); */
+int		move_in_list(t_list **stack_a, t_list **stack_b);
+void	list_move_a(t_moves **mov, t_list **stack_b, t_list **stack_a);
+int		find_in_a(int cont, t_list **stack_a);
+int		add_mov_list(t_moves **mov, t_list **stack_b);
+void	list_move_b(t_moves **mov);
+int		find_max_mov(t_list **stack_a);
 
 #endif
