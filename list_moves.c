@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/20 15:52:59 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:11:36 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ void	list_move_a(t_moves **mov, t_list **stack_b, t_list **stack_a)
 	while (node_b != NULL)
 	{
 		move->move_a = find_in_a(node_b->content, stack_a);
-		ft_printf("move_b = %d\tmove_a = %d\n", move->move_b);
 		move = move->next;
 		node_b = node_b->next;
 	}

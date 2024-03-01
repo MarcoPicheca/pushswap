@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:01:32 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/20 17:23:40 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:22:39 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	ft_print_list(t_list **stack_a, t_list **stack_b)
 }
 
 /*
-TODO:	rifare move_a move_b e move_c
+TODO:	RIGUARDA LE SA SB SS PER IL PUNTATORE AL NODO PRE
 */
 
 int	main(int ac, char **av)
@@ -127,7 +127,6 @@ int	main(int ac, char **av)
 	int		max_lis;
 
 	stack_a = NULL;
-	stack_b = NULL;
 	if (ac == 1)
 		return (0);
 	if (gen_stack(&stack_a, av) == 1)
@@ -137,6 +136,7 @@ int	main(int ac, char **av)
 	}
 	if (check_double(&stack_a, NULL) || check_sequence(&stack_a))
 		return (0);
+	stack_b = stack_a;
 	if (ft_lstsize((stack_a)) <= 5
 		&& lst_less_5(&stack_a, &stack_b, ft_lstsize(stack_a)))
 		return (0);

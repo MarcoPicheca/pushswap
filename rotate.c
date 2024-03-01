@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:05:04 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/20 15:30:30 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:19:49 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 int	ra(t_list **stack_a, int flag)
 {
 	t_list	*testa;
-	t_list	*tmp;
 	t_list	*last;
 
 	testa = (*stack_a);
-	tmp = (*stack_a);
-	last = ft_lstlast(tmp);
+	last = ft_lstlast((*stack_a));
 	if (ft_lstsize((*stack_a)) <= 1)
 		return (1);
 	if (ft_lstsize((*stack_a)) == 2)
@@ -30,6 +28,7 @@ int	ra(t_list **stack_a, int flag)
 	}
 	*stack_a = testa->next;
 	testa->next = NULL;
+	testa->pre = last;
 	last->next = testa;
 	if (flag == 0)
 		ft_printf("ra\n");
@@ -40,16 +39,15 @@ int	ra(t_list **stack_a, int flag)
 int	rb(t_list **stack_b, int flag)
 {
 	t_list	*testa;
-	t_list	*tmp;
 	t_list	*last;
 
 	testa = (*stack_b);
-	tmp = (*stack_b);
-	last = ft_lstlast(tmp);
+	last = ft_lstlast((*stack_b));
 	if (!(*stack_b))
 		return (1);
 	*stack_b = testa->next;
 	testa->next = NULL;
+	testa->pre = last;
 	last->next = testa;
 	if (flag == 0)
 		ft_printf("rb\n");
