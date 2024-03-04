@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:04:55 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/01 14:44:45 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:01:41 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	rra(t_list **stack_a, int flag)
 	tmp = penultimo((*stack_a));
 	last = ft_lstlast((*stack_a));
 	last->next = (*stack_a);
+	(*stack_a)->pre = last;
 	last->pre = NULL;
 	tmp->next = NULL;
 	(*stack_a) = last;
@@ -60,6 +61,7 @@ int	rrb(t_list **stack_b, int flag)
 	tmp = penultimo((*stack_b));
 	last = ft_lstlast((*stack_b));
 	last->next = (*stack_b);
+	(*stack_b)->pre = last;
 	last->pre = NULL;
 	tmp->next = NULL;
 	(*stack_b) = last;

@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:41:16 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/09 14:40:41 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:55:54 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_lstsize(t_list *lst)
 
 	scorri = lst;
 	i = 0;
-	while (scorri)
+	while (scorri != NULL)
 	{
 		scorri = scorri->next;
 		i++;
@@ -43,7 +43,7 @@ t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
 		return (NULL);
-	while (lst)
+	while (lst->next)
 	{
 		if (lst->next == NULL)
 			return (lst);

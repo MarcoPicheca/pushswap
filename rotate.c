@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:05:04 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/01 15:19:49 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:05:01 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ra(t_list **stack_a, int flag)
 		ft_printf("ra\n");
 		return (sa(stack_a, 1));
 	}
-	*stack_a = testa->next;
+	(*stack_a) = (*stack_a)->next;
 	testa->next = NULL;
 	testa->pre = last;
 	last->next = testa;

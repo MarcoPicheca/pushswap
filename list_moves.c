@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/01 14:11:36 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:48:16 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,14 @@ int	add_mov_list(t_moves **mov, t_list **stack_b)
 	{
 		new = (t_moves *)malloc(sizeof(t_moves) * 1);
 		if (!new)
-			return (0);
-		new->move_a = 0;
-		new->move_b = 0;
-		new->move_c = 0;
-		new->next = NULL;
-		if (!new)
 		{
 			ft_printf("ERR: creazione lista mosse\n");
 			return (0);		
 		}
+		new->move_a = 0;
+		new->move_b = 0;
+		new->move_c = 0;
+		new->next = NULL;
 		ft_lstadd_back2(mov, new);
 		i++;
 	}
@@ -151,16 +149,100 @@ int	list_move_c(t_moves **mov)
 	return (0);
 }
 
+void	from_b_to_a(int a, int b, t_list **stack_a, t_list **stack_b)
+{
+	while (a != 0 || b != 0)
+	{
+		if (b > 0 && a > 0)
+		{
+			rr(stack_a, stack_b);
+			b--;
+			a--;
+		}
+		else if (b < 0 && a < 0)
+		{
+			rrr(stack_a, stack_b);
+			b++;
+			a++;
+		}
+		else if (b < 0 && a == 0)
+		{
+			rrb(stack_b, 0);
+			b++;
+		}
+		else if (a < 0 && b == 0)
+		{
+			rra(stack_a, 0);
+			a++;
+		}
+		else if (b > 0 && a == 0)
+		{
+			rb(stack_b, 0);
+			b--;
+		}
+		else if (a > 0 && b == 0)
+		{
+			ra(stack_a, 0);
+			a--;			
+		}
+		else if (a < 0 && b > 0)
+		{
+			rra(stack_a, 0);
+			rb(stack_b, 0);
+			a++;
+			b--;
+		}
+		else if (a > 0 && b < 0)
+		{
+			rrb(stack_b, 0);
+			ra(stack_a, 0);
+			a--;
+			b++;
+		}
+		else if (a == 0 && b == 0)
+			break;
+	}
+	pa(stack_a, stack_b);
+}
+
+int	actual_move(t_list **stack_a, t_list **stack_b, t_moves **mov)
+{
+	int		g;
+	t_moves	*node;
+	t_moves	*node_1;
+	
+	g = INT_MAX;
+	node = (*mov);
+	while (node != NULL)
+	{
+		if (node->move_c < g)
+		{
+			g = node->move_c;
+			node_1 = node;
+		}
+		node = node->next;
+	}
+	from_b_to_a(node_1->move_a, node_1->move_b, stack_a, stack_b);
+	return (0);
+}
+
 int	move_in_list(t_list **stack_a, t_list **stack_b)
 {
 	t_moves	*mov;
 
 	mov = NULL;
-	if (!add_mov_list(&mov, stack_b))
-		return (0);
-	list_move_b(&mov);
-	list_move_a(&mov, stack_b, stack_a);
-	list_move_c(&mov);
+	ft_print_list(stack_a, stack_b);
+	while (stack_b != NULL && (*stack_b))
+	{
+		if (!add_mov_list(&mov, stack_b))
+			return (0);
+		list_move_b(&mov);
+		list_move_a(&mov, stack_b, stack_a);
+		list_move_c(&mov);
+		actual_move(stack_a, stack_b, &mov);
+		free_mov_list(&mov);
+		mov = NULL;
+	}
 	while (mov != NULL)
 	{
 		ft_printf("move_a = %d\t", mov->move_a);

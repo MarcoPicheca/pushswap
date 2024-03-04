@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:05:11 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/20 15:30:10 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:26:57 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	sa(t_list **stack_a, int flag)
 		return (1);
 	node = (*stack_a)->next;
 	(*stack_a)->next = node->next;
+	node->next->pre = (*stack_a);
 	node->next = (*stack_a);
+	(*stack_a)->pre = node;
 	*stack_a = node;
+	(*stack_a)->pre = NULL;
 	if (flag == 0)
 		ft_printf("sa\n");
 	posix_gen(stack_a);
@@ -36,8 +39,11 @@ int	sb(t_list **stack_b, int flag)
 		return (1);
 	node = (*stack_b)->next;
 	(*stack_b)->next = node->next;
+	node->next->pre = (*stack_b);
 	node->next = (*stack_b);
+	(*stack_b)->pre = node;
 	*stack_b = node;
+	(*stack_b)->pre = NULL;
 	if (flag == 0)
 		ft_printf("sb\n");
 	posix_gen(stack_b);

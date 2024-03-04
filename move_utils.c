@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:41:16 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/09 14:40:41 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:42:34 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_moves	*ft_lstlast2(t_moves *lst)
 {
 	if (!lst)
 		return (NULL);
-	while (lst)
+	while (lst != NULL)
 	{
 		if (lst->next == NULL)
 			return (lst);

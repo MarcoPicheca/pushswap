@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:30:57 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:30 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:09:44 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ void	ft_free_stack2(t_list **stack_b);
 void	ft_free_stack(t_list **stack_a, t_list **stack_b);
 void	free_matrix(char **split);
 void	free_moves(int *move_a, int *move_b, int *move_c);
+void	free_mov_list(t_moves **mov);
 
 // generation of the stack
 int		gen_stack(t_list **stack_a, char **av);
 int		split_add_stack(char *arg, t_list **stack_a);
 int		add_to_stack(char *arg, t_list **stack_a);
 void	fill_stack(t_list **stack_a);
+int		duplicate_node(t_list **stack_a, t_list **stack_b);
 
 // basic checks
 int		check_double(t_list **stack_a, t_list **stack_b);
@@ -118,5 +120,6 @@ int		find_in_a(int cont, t_list **stack_a);
 int		add_mov_list(t_moves **mov, t_list **stack_b);
 void	list_move_b(t_moves **mov);
 int		find_max_mov(t_list **stack_a);
+int		actual_move(t_list **stack_a, t_list **stack_b, t_moves **mov);
 
 #endif

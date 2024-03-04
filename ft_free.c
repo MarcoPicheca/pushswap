@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:16:45 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/20 14:46:34 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:45:33 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_free_stack2(t_list **stack_b)
 {
 	t_list	*node;
 
-	if (!stack_b)
+	if (!stack_b || !(*stack_b))
 		return ;
 	if ((*stack_b) && (*stack_b)->next)
 		node = (*stack_b)->next;
@@ -69,14 +69,20 @@ void	free_matrix(char **split)
 	free(split);
 }
 
-// qui fallisce per non si sa cosa perchè memoria e puntatore sono corretti
-void	free_moves(int *move_a, int *move_b, int *move_c)
+void	free_mov_list(t_moves **mov)
 {
-	if (move_a)
-		free(move_a);
-	if (move_b)
-		free(move_b);
-	printf("%ld\n", sizeof(move_c));
-	if (move_c && *move_c)
-		free(move_c);
+	t_moves	*node;
+	t_moves	*node_1;
+
+	node = (*mov);
+	node_1 = (*mov)->next;
+	while (node_1 != NULL)
+	{
+		free(node);
+		node = NULL;
+		node = node_1;
+		node_1 = node_1->next;		
+	}
+	free(node);
+	node = NULL;
 }

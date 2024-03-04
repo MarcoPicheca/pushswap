@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lis_moves.c                                        :+:      :+:    :+:   */
+/*   lis_and_solve.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/20 15:52:59 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:21:12 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int	possible_sa(t_list **stack)
 	if ((*stack)->content > node->content
 		&& node->next != NULL)
 	{
-		if (node->next->content > (*stack)->content)
+		if (node->next->content > (*stack)->content
+			&& node->next->next->content > (*stack)->content)
 		{
 			(*stack)->lis = 0;
 			sa(stack, 0);
@@ -86,7 +87,7 @@ int	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis)
 		else
 			rra(stack_a, 0);
 	}
-	ft_print_list(stack_a, stack_b);
+	// ft_print_list(stack_a, stack_b);
 	if (!move_in_list(stack_a, stack_b))
 	{
 		ft_free_stack(stack_a, stack_b);
