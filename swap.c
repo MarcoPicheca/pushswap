@@ -20,7 +20,8 @@ int	sa(t_list **stack_a, int flag)
 		return (1);
 	node = (*stack_a)->next;
 	(*stack_a)->next = node->next;
-	node->next->pre = (*stack_a);
+	if (node->next)
+		node->next->pre = (*stack_a);
 	node->next = (*stack_a);
 	(*stack_a)->pre = node;
 	*stack_a = node;
@@ -39,7 +40,8 @@ int	sb(t_list **stack_b, int flag)
 		return (1);
 	node = (*stack_b)->next;
 	(*stack_b)->next = node->next;
-	node->next->pre = (*stack_b);
+	if (node->next)
+		node->next->pre = (*stack_b);
 	node->next = (*stack_b);
 	(*stack_b)->pre = node;
 	*stack_b = node;

@@ -56,7 +56,7 @@ int	rrb(t_list **stack_b, int flag)
 	if (ft_lstsize((*stack_b)) == 2)
 	{
 		ft_printf("rrb\n");
-		return (sa(stack_b, 1));
+		return (sb(stack_b, 1));
 	}
 	tmp = penultimo((*stack_b));
 	last = ft_lstlast((*stack_b));

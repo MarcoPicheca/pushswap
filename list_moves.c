@@ -231,7 +231,6 @@ int	move_in_list(t_list **stack_a, t_list **stack_b)
 	t_moves	*mov;
 
 	mov = NULL;
-	ft_print_list(stack_a, stack_b);
 	while (stack_b != NULL && (*stack_b))
 	{
 		if (!add_mov_list(&mov, stack_b))
@@ -240,15 +239,17 @@ int	move_in_list(t_list **stack_a, t_list **stack_b)
 		list_move_a(&mov, stack_b, stack_a);
 		list_move_c(&mov);
 		actual_move(stack_a, stack_b, &mov);
+		// while (mov != NULL)
+		// {
+		// 	ft_printf("move_a = %d\t", mov->move_a);
+		// 	ft_printf("move_b = %d\t", mov->move_b);
+		// 	ft_printf("move_c = %d\n", mov->move_c);
+		// 	mov = mov->next;
+		// }
+		// exit(0);
 		free_mov_list(&mov);
 		mov = NULL;
 	}
-	while (mov != NULL)
-	{
-		ft_printf("move_a = %d\t", mov->move_a);
-		ft_printf("move_b = %d =\t", mov->move_b);
-		ft_printf("move_c = %d\n", mov->move_c);
-		mov = mov->next;
-	}
+	// ft_print_list(stack_a, stack_b);
 	return (1);
 }

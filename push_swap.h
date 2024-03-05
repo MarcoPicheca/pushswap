@@ -99,7 +99,6 @@ int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
 void	posix_gen(t_list **stack_a);
 int		from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis);
 void	from_a_to_b2(t_list *node, int max_lis);
-int		possible_sa(t_list **stack);
 
 // moves utils
 int		ft_lstsize2(t_moves *lst);

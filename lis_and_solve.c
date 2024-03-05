@@ -53,27 +53,6 @@ int	lis_zero(t_list **stack_a)
 	return (0);
 }
 
-int	possible_sa(t_list **stack)
-{
-	t_list	*node;
-
-	node = (*stack)->next;
-	if ((*stack)->content > node->content
-		&& node->next != NULL)
-	{
-		if (node->next->content > (*stack)->content
-			&& node->next->next->content > (*stack)->content)
-		{
-			(*stack)->lis = 0;
-			sa(stack, 0);
-			return (1);
-		}
-		else
-			return (0);
-	}
-	return (0);
-}
-
 int	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis)
 {
 	t_list	*node;
@@ -82,12 +61,11 @@ int	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis)
 	from_a_to_b2(node, max_lis);
 	while (lis_zero(stack_a))
 	{
-		if ((*stack_a)->lis != 0 && !possible_sa(stack_a))
+		if ((*stack_a)->lis != 0)
 			pb(stack_a, stack_b);
 		else
 			rra(stack_a, 0);
 	}
-	// ft_print_list(stack_a, stack_b);
 	if (!move_in_list(stack_a, stack_b))
 	{
 		ft_free_stack(stack_a, stack_b);

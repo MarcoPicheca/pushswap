@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-int count = 0;
-
 int	duplicate_node(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node;
@@ -74,7 +72,6 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	(*stack_a) = tmp;
 	posix_gen(stack_a);
 	posix_gen(stack_b);
-	count++;
-	ft_printf("pa %d\n", count);
+	ft_printf("pa\n");
 	return ;
 }
