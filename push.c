@@ -22,7 +22,7 @@ int	duplicate_node(t_list **stack_a, t_list **stack_b)
 	{
 		ft_printf("ERR: creazione stack_b");
 		ft_free_stack(stack_a, stack_b);
-		return (1);		
+		return (1);
 	}
 	node_1 = (*stack_a)->next;
 	free(*stack_a);
@@ -41,6 +41,7 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	if (!stack_b || !(*stack_b))
 	{
 		duplicate_node(stack_a, stack_b);
+		ft_printf("pb\n");
 		return ;
 	}
 	tmp = (*stack_a);

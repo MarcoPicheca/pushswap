@@ -53,19 +53,37 @@ int	lis_zero(t_list **stack_a)
 	return (0);
 }
 
-int	from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis)
+void	adjust_a(t_list **stack_a)
 {
+	int		g;
 	t_list	*node;
+	t_list	*node_1;
 
-	node = ft_lstlast((*stack_a));
-	from_a_to_b2(node, max_lis);
-	while (lis_zero(stack_a))
+	g = INT_MAX;
+	node = (*stack_a);
+	while (node != NULL)
 	{
-		if ((*stack_a)->lis != 0)
-			pb(stack_a, stack_b);
+		if (node->content < g)
+		{
+			g = node->content;
+			node_1 = node;
+		}
+		node = node->next;
+	}
+	while ((*stack_a)->content != g)
+	{
+		if (node_1->posix <= ft_lstsize((*stack_a)) / 2)
+			ra(stack_a, 0);
 		else
 			rra(stack_a, 0);
 	}
+}
+
+int	from_a_to_b(t_list **stack_a, t_list **stack_b)
+{
+	while (ft_lstsize((*stack_a)) > 5)
+		pb(stack_a, stack_b);
+	ft_lst_5(stack_a, stack_b);
 	if (!move_in_list(stack_a, stack_b))
 	{
 		ft_free_stack(stack_a, stack_b);

@@ -25,7 +25,7 @@ void	fill_stack(t_list **stack_a)
 		node->posix = i++;
 		node->prev = -1;
 		node = node->next;
-	}	
+	}
 }
 
 void	posix_gen(t_list **stack)
@@ -41,7 +41,7 @@ void	posix_gen(t_list **stack)
 	{
 		node->posix = i++;
 		node = node->next;
-	}	
+	}
 }
 
 int	ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix)
@@ -67,13 +67,11 @@ int	ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix)
 
 int	gen_lis(t_list **stack_a)
 {
-	t_list	*node;
-	t_list	*node1;
-	int		max_lis;
-	
+	t_list			*node;
+	t_list			*node1;
+	static int		max_lis = 0;
+
 	node = (*stack_a);
-	max_lis = 0;
-	fill_stack(stack_a);
 	while (node->next != NULL)
 	{
 		node1 = node->next;
@@ -85,26 +83,12 @@ int	gen_lis(t_list **stack_a)
 			{
 				node1->lis += 1;
 				max_lis = node1->lis;
-				node1->prev = ft_find_prev(stack_a, node1, node1->lis
-				, node1->posix);
+				node1->prev = ft_find_prev(stack_a, node1, node1->lis,
+						node1->posix);
 			}
 			node1 = node1->next;
 		}
-		node = node->next;		
+		node = node->next;
 	}
 	return (max_lis);
 }
-
-/* 
-0	1	2	3	4	5	6	7	8	9
-
-10  4   8	3	-3	89	78	5	9	2
-
-1	1	2	1	1	3	3	2	3	2
-
--1	-1	1	-1	-1	2	2	1	2	4 */
-
-
-
-
-

@@ -92,8 +92,7 @@ int	check_max_min(char *str)
 		if (min_compare(str))
 			return (1);
 	}
-	else if (ft_strlen(str) == 10
-			|| (ft_strlen(str) == 11 && str[0] == '+'))
+	else if (ft_strlen(str) == 10 || (ft_strlen(str) == 11 && str[0] == '+'))
 	{
 		if (max_compare(str))
 			return (1);
@@ -103,7 +102,7 @@ int	check_max_min(char *str)
 	return (0);
 }
 
-int check_sequence(t_list **stack_a)
+int	check_sequence(t_list **stack_a)
 {
 	t_list	*node;
 	t_list	*node1;

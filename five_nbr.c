@@ -43,7 +43,7 @@ int	ft_lst_3(t_list **stack)
 t_list	*find_major(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node_a;
-	
+
 	node_a = (*stack_a);
 	while (node_a != NULL)
 	{
@@ -95,7 +95,7 @@ int	ft_lst_5(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-int		lst_less_5(t_list **stack_a, t_list **stack_b, int size)
+int	lst_less_5(t_list **stack_a, t_list **stack_b, int size)
 {
 	posix_gen(stack_a);
 	if (size == 2)

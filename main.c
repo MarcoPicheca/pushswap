@@ -16,7 +16,6 @@ int	add_to_stack(char *arg, t_list **stack_a)
 {
 	t_list	*node;
 
-	
 	if (ft_strlen(arg) > 11)
 		return (1);
 	if (ft_strlen(arg) == 11 || ft_strlen(arg) == 10)
@@ -28,7 +27,7 @@ int	add_to_stack(char *arg, t_list **stack_a)
 	if (!node)
 	{
 		ft_printf("ERR: creazione stack");
-		return (1);		
+		return (1);
 	}
 	ft_lstadd_back(stack_a, node);
 	return (0);
@@ -63,7 +62,7 @@ int	split_add_stack(char *arg, t_list **stack_a)
 int	gen_stack(t_list **stack_a, char **av)
 {
 	int		i;
-	
+
 	i = 1;
 	while (av[i])
 	{
@@ -87,44 +86,10 @@ int	gen_stack(t_list **stack_a, char **av)
 	return (0);
 }
 
-void	ft_print_list(t_list **stack_a, t_list **stack_b)
-{
-	t_list *node;
-	t_list *node_b;
-	int i = 0;
-
-	node = (*stack_a);
-	node_b = (*stack_b);
-	ft_printf("\nlistaccia\n");
-	while (node != NULL || node_b != NULL)
-	{
-		if (node)
-		{
-			ft_printf("STACK_A : nodo[%d] = cont[%d]", node->posix, node->content);
-			node = node->next;
-		}
-		if (!node)
-			ft_printf("\t\t\t");
-		if (node_b)
-		{
-			ft_printf("\tSTACK_B : nodo[%d] = cont[%d]\n", node_b->posix, node_b->content);
-			node_b = node_b->next;
-		}
-		else
-			ft_printf("\n");
-		i++;
-	}
-}
-
-/*
-TODO:	- risoluzione finale e sistemazione norminette	
-*/
-
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		max_lis;
 
 	stack_a = NULL;
 	if (ac == 1)
@@ -140,9 +105,10 @@ int	main(int ac, char **av)
 	if (ft_lstsize((stack_a)) <= 5
 		&& lst_less_5(&stack_a, &stack_b, ft_lstsize(stack_a)))
 		return (0);
-	max_lis = gen_lis(&stack_a);
-	// gen_lis(&stack_a);
-	from_a_to_b(&stack_a, &stack_b, max_lis);
-	// ft_print_list(&stack_a, &stack_b);
+	fill_stack(&stack_a);
+	gen_lis(&stack_a);
+	from_a_to_b(&stack_a, &stack_b);
+	adjust_a(&stack_a);
+	check_sequence(&stack_a);
 	return (0);
 }

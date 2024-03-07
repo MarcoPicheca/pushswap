@@ -27,9 +27,9 @@ SRC = ft_split.c \
 	  reverse.c \
       main.c \
 	  list_moves.c \
+	  list_moves2.c \
+	  from_b_to_a.c \
 	  move_utils.c \
-	#   ft_move_a_b.c \
-	#   ft_solve_move_c.c \
 	
 
 OBJ = $(SRC:.c=.o)

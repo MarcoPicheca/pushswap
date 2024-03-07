@@ -15,7 +15,7 @@
 int	sa(t_list **stack_a, int flag)
 {
 	t_list	*node;
-	
+
 	if ((*stack_a)->next == NULL || *stack_a == NULL)
 		return (1);
 	node = (*stack_a)->next;
@@ -35,7 +35,7 @@ int	sa(t_list **stack_a, int flag)
 int	sb(t_list **stack_b, int flag)
 {
 	t_list	*node;
-	
+
 	if ((*stack_b)->next == NULL || *stack_b == NULL)
 		return (1);
 	node = (*stack_b)->next;

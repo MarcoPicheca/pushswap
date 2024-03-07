@@ -20,19 +20,19 @@
 
 typedef struct s_list
 {
-	int		content;
-	int		lis;
-	int		posix;
-	int		prev;
+	int				content;
+	int				lis;
+	int				posix;
+	int				prev;
 	struct s_list	*next;
 	struct s_list	*pre;
 }				t_list;
 
 typedef struct s_moves
 {
-	int		move_a;
-	int		move_b;
-	int		move_c;
+	int				move_a;
+	int				move_b;
+	int				move_c;
 	struct s_moves	*next;
 	struct s_moves	*prev;
 }				t_moves;
@@ -97,8 +97,9 @@ int		rrr(t_list **stack_a, t_list **stack_b);
 int		gen_lis(t_list **stack_a);
 int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
 void	posix_gen(t_list **stack_a);
-int		from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis);
+int		from_a_to_b(t_list **stack_a, t_list **stack_b);
 void	from_a_to_b2(t_list *node, int max_lis);
+void	adjust_a(t_list **stack_a);
 
 // moves utils
 int		ft_lstsize2(t_moves *lst);
@@ -106,19 +107,14 @@ t_moves	*ft_lstlast2(t_moves *lst);
 void	ft_lstadd_back2(t_moves **lst, t_moves *new);
 
 // move_a_move_b system
-/* int		mov_a_mov_b(t_list **stack_a, t_list **stack_b);
-int		gen_move_b(int *move_b, t_list **stack_b);
-int		gen_move_a(int *move_a, t_list **stack_a, t_list **stack_b);
-int		find_move_b(int cont, t_list **stack_a);
-int		ft_move_c(int *move_a, int *move_b, int *move_c, t_list **stack_a, t_list **stack_b);
-void	actual_moves(int *move_a, int *move_b, int *move_c, t_list **stack_a, t_list **stack_b);
-void	from_b_to_a(int a, int b, t_list **stack_a, t_list **stack_b); */
 int		move_in_list(t_list **stack_a, t_list **stack_b);
 void	list_move_a(t_moves **mov, t_list **stack_b, t_list **stack_a);
 int		find_in_a(int cont, t_list **stack_a);
+int		pos_stack(int pos, t_list **stack_a);
 int		add_mov_list(t_moves **mov, t_list **stack_b);
 void	list_move_b(t_moves **mov);
 int		find_max_mov(t_list **stack_a);
 int		actual_move(t_list **stack_a, t_list **stack_b, t_moves **mov);
+void	from_b_to_a(int a, int b, t_list **stack_a, t_list **stack_b);
 
 #endif

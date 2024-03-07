@@ -81,7 +81,7 @@ void	free_mov_list(t_moves **mov)
 		free(node);
 		node = NULL;
 		node = node_1;
-		node_1 = node_1->next;		
+		node_1 = node_1->next;
 	}
 	free(node);
 	node = NULL;

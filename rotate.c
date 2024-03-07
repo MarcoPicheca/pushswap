@@ -60,5 +60,5 @@ int	rr(t_list **stack_a, t_list **stack_b)
 	if (ra(stack_a, 1) || rb(stack_b, 1))
 		return (1);
 	ft_printf("rr\n");
-	return(0);
+	return (0);
 }
