@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:30:57 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/04 18:09:44 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:00:36 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ size_t	ft_strlen(const char *str);
 void	ft_free_stack2(t_list **stack_b);
 void	ft_free_stack(t_list **stack_a, t_list **stack_b);
 void	free_matrix(char **split);
-void	free_moves(int *move_a, int *move_b, int *move_c);
 void	free_mov_list(t_moves **mov);
 
 // generation of the stack
@@ -74,7 +73,6 @@ int		ft_lst_3(t_list **stack);
 int		ft_lst_4(t_list **stack_a, t_list **stack_b, int flag);
 t_list	*find_major(t_list **stack_a, t_list **stack_b);
 t_list	*penultimo(t_list *stack);
-void	ft_print_list(t_list **stack_a, t_list **stack_b);
 int		first_roll(t_list **stack_a, t_list *node);
 void	second_roll(t_list **stack_a, int i);
 void	corr_sequence(t_list **stack_a);
@@ -97,7 +95,7 @@ int		rrr(t_list **stack_a, t_list **stack_b);
 int		gen_lis(t_list **stack_a);
 int		ft_find_prev(t_list **stack_a, t_list *node_lis, int lis, int posix);
 void	posix_gen(t_list **stack_a);
-int		from_a_to_b(t_list **stack_a, t_list **stack_b);
+int		from_a_to_b(t_list **stack_a, t_list **stack_b, int max_lis);
 void	from_a_to_b2(t_list *node, int max_lis);
 void	adjust_a(t_list **stack_a);
 
@@ -108,7 +106,7 @@ void	ft_lstadd_back2(t_moves **lst, t_moves *new);
 
 // move_a_move_b system
 int		move_in_list(t_list **stack_a, t_list **stack_b);
-void	list_move_a(t_moves **mov, t_list **stack_b, t_list **stack_a);
+int		list_move_a(t_moves **mov, t_list **stack_b, t_list **stack_a);
 int		find_in_a(int cont, t_list **stack_a);
 int		pos_stack(int pos, t_list **stack_a);
 int		add_mov_list(t_moves **mov, t_list **stack_b);
@@ -116,5 +114,6 @@ void	list_move_b(t_moves **mov);
 int		find_max_mov(t_list **stack_a);
 int		actual_move(t_list **stack_a, t_list **stack_b, t_moves **mov);
 void	from_b_to_a(int a, int b, t_list **stack_a, t_list **stack_b);
+int		sort_2_in_b(t_list **stack_a, t_list **stack_b);
 
 #endif

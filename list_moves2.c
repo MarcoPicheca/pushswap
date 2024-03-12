@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/04 17:48:16 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:26:00 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	add_mov_list(t_moves **mov, t_list **stack_b)
 		new = (t_moves *)malloc(sizeof(t_moves) * 1);
 		if (!new)
 		{
-			ft_printf("ERR: creazione lista mosse\n");
+			ft_printf("Error\n");
 			return (0);
 		}
 		new->move_a = 0;
@@ -45,7 +45,7 @@ void	list_move_b(t_moves **mov)
 	node = (*mov);
 	half = 0;
 	i = 0;
-	while (node != NULL)
+	while (node != NULL )
 	{
 		if (i < (ft_lstsize2((*mov)) / 2))
 			node->move_b = half++;

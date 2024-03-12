@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/09 18:41:44 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:58:02 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ int	lst_less_5(t_list **stack_a, t_list **stack_b, int size)
 		ft_lst_4(stack_a, stack_b, 0);
 	if (size == 5)
 		ft_lst_5(stack_a, stack_b);
-	ft_free_stack2(stack_b);
+	check_sequence(stack_a);
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 12:00:18 by mapichec          #+#    #+#              #
-#    Updated: 2024/02/19 12:17:57 by mapichec         ###   ########.fr        #
+#    Updated: 2024/03/11 15:12:43 by mapichec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC = ft_split.c \
 	  list_moves2.c \
 	  from_b_to_a.c \
 	  move_utils.c \
+	  select_sort.c \
 	
 
 OBJ = $(SRC:.c=.o)

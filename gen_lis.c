@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:27:26 by mapichec          #+#    #+#             */
-/*   Updated: 2024/02/19 14:14:55 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/09 18:24:06 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,9 @@ int	gen_lis(t_list **stack_a)
 {
 	t_list			*node;
 	t_list			*node1;
-	static int		max_lis = 0;
+	int				max_lis;
 
+	max_lis = 0;
 	node = (*stack_a);
 	while (node->next != NULL)
 	{
