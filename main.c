@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:01:32 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/11 11:53:07 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:43:42 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	add_to_stack(char *arg, t_list **stack_a)
 {
 	t_list	*node;
 
+	while (*arg == '0')
+		arg++;
 	if (ft_strlen(arg) > 11)
 		return (1);
 	if (ft_strlen(arg) == 11 || ft_strlen(arg) == 10)
@@ -25,10 +27,7 @@ int	add_to_stack(char *arg, t_list **stack_a)
 	}
 	node = ft_lstnew(ft_atoi(arg));
 	if (!node)
-	{
-		ft_printf("Error\n");
 		return (1);
-	}
 	ft_lstadd_back(stack_a, node);
 	return (0);
 }
@@ -42,14 +41,12 @@ int	split_add_stack(char *arg, t_list **stack_a)
 	split = ft_split(arg, 32);
 	if (!split)
 	{
-		ft_printf("Error\n");
 		return (1);
 	}
 	while (split[i] != NULL)
 	{
 		if (add_to_stack(split[i], stack_a))
 		{
-			ft_printf("Error\n");
 			free_matrix(split);
 			return (1);
 		}
@@ -68,7 +65,6 @@ int	gen_stack(t_list **stack_a, char **av)
 	{
 		if (ft_isdigit(av[i]))
 		{
-			ft_printf("Error\n");
 			return (1);
 		}
 		if (ft_isspace(av[i]))
@@ -105,7 +101,9 @@ int	main(int ac, char **av)
 		return (0);
 	if (gen_stack(&stack_a, av) == 1)
 	{
-		ft_free_stack(&stack_a, NULL);
+		if (stack_a)
+			ft_free_stack(&stack_a, NULL);
+		ft_printf("Error\n");
 		return (0);
 	}
 	stack_b = NULL;
