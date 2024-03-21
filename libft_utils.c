@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 14:53:34 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/12 17:03:22 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:13:52 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	ft_isdigit(char *str)
 			i++;
 		if (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
 			i++;
-		else if ((str[i] < '0' || str[i] > '9') && str[i] != 32 && str[i] != '\0')
+		else if ((str[i] < '0' || str[i] > '9')
+			&& str[i] != 32 && str[i] != '\0')
 			return (1);
 	}
 	return (0);
