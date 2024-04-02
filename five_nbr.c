@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/11 11:58:02 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:11:34 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int	ft_lst_4(t_list **stack_a, t_list **stack_b, int flag)
 	}
 	i = first_roll(stack_a, node);
 	pa(stack_a, stack_b);
-	second_roll(stack_a, i);
+	if ((*stack_b) && (*stack_a)->content < (*stack_b)->content)
+		second_roll(stack_a, i);
 	if (flag == 0)
 		corr_sequence(stack_a);
 	return (0);

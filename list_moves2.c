@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:02:23 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/12 16:26:00 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/23 17:00:20 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	add_mov_list(t_moves **mov, t_list **stack_b)
 		new = (t_moves *)malloc(sizeof(t_moves) * 1);
 		if (!new)
 		{
-			ft_printf("Error\n");
+			ft_putstr_fd("Error\n", 2);
 			return (0);
 		}
 		new->move_a = 0;

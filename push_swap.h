@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:30:57 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/21 11:54:13 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:56:07 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		ft_isdigit(char *str);
 int		arg_exist(char *str);
 int		ft_isspace(char *str);
 char	**ft_split(const char *s, char c);
+void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *str);
 
 // free stack and matrix functions

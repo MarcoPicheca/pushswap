@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:01:32 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/21 13:43:42 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/23 17:01:12 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int ac, char **av)
 	{
 		if (stack_a)
 			ft_free_stack(&stack_a, NULL);
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	stack_b = NULL;

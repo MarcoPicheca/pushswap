@@ -6,7 +6,7 @@
 /*   By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:34:30 by mapichec          #+#    #+#             */
-/*   Updated: 2024/03/12 16:44:01 by mapichec         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:10:15 by mapichec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_double(t_list **stack_a, t_list **stack_b)
 		{
 			if (node_1->content == node_2->content)
 			{
-				ft_printf("Error\n");
+				ft_putstr_fd("Error\n", 2);
 				ft_free_stack(stack_a, stack_b);
 				return (1);
 			}
@@ -55,10 +55,7 @@ int	max_compare(char *str)
 		i++;
 	}
 	if (nbr > max)
-	{
-		ft_printf("Error\n");
 		return (1);
-	}
 	return (0);
 }
 
@@ -78,10 +75,7 @@ int	min_compare(char *str)
 		i++;
 	}
 	if (nbr > min)
-	{
-		ft_printf("Error\n");
 		return (1);
-	}
 	return (0);
 }
 

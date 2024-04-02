@@ -6,7 +6,7 @@
 #    By: mapichec <mapichec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 12:00:18 by mapichec          #+#    #+#              #
-#    Updated: 2024/03/11 15:12:43 by mapichec         ###   ########.fr        #
+#    Updated: 2024/03/23 16:56:41 by mapichec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = push_swap
 
 SRC = ft_split.c \
       list_utils.c \
+      ft_putstr_fd.c \
       libft_utils.c \
 	  ft_free.c \
 	  check_nbr.c \
