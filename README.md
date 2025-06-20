@@ -35,6 +35,6 @@ La mia strategia di ordinamento si basa su due fasi principali:
 ---
 
 ## 🛠️ Compilazione
-$ `make`
-$ `./push_swap 3 2 1 6 5 8 7 4`
-$ `make fclean`
+- $ `make`
+- $ `./push_swap 3 2 1 6 5 8 7 4`
+- $ `make fclean`
